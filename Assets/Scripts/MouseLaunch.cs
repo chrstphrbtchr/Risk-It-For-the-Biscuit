@@ -10,8 +10,9 @@ public class MouseLaunch : MonoBehaviour
     public float strength;
     public static bool IsLauching;
     float maxTime = 3, timer = 0;
-    public float maxStrength;
+    public float minStrenght, maxStrength;
     public float possibleMaxSpring;
+    public static float massMuliplier = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class MouseLaunch : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            strength = 0;
+            strength = 10;
         }
         if (Input.GetMouseButton(0))
         {
@@ -34,24 +35,26 @@ public class MouseLaunch : MonoBehaviour
         {
             //IsLauching = true;
             //mousebody.constraints = RigidbodyConstraints.None;
-            strength = Mathf.Clamp(strength, 0, maxStrength);
+            strength = Mathf.Clamp(strength, minStrenght, maxStrength);
             timer = maxTime;
             mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
-        }
-
-        if (Input.GetMouseButton(1))
-        {
-            mousebody.mass += 1;
+            //Invoke("TESTESTEAOCIBEANC", 1.5f);
         }
 
         if (timer > 0)
         {
-            timer -= Time.deltaTime;
+            massMuliplier = Mathf.Clamp(massMuliplier, 1, 25);
+            timer -= (Time.deltaTime / massMuliplier );
             timer = Mathf.Clamp(timer, 0, maxTime);
             float nowish = timer / maxTime;
             spring.maxDistance = Mathf.Lerp(0, 50, nowish);
             spring.minDistance = Mathf.Lerp(0, 10, nowish);
             spring.spring = Mathf.Lerp(possibleMaxSpring, 10, nowish);
         }
+    }
+
+    void TESTESTEAOCIBEANC()
+    {
+        massMuliplier = 20;
     }
 }

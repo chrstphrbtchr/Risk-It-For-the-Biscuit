@@ -23,6 +23,7 @@ public class MouseLook : MonoBehaviour
 
     void Look()
     {
+        if (MouseLaunch.IsLauching) { return; } 
         float mouseX = Input.GetAxis("Mouse X") * lookSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * lookSensitivity * Time.deltaTime;
         xRot -= mouseY;

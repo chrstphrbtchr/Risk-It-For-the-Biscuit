@@ -13,11 +13,16 @@ public class Collideable : MonoBehaviour
         }
         if(collision.collider.gameObject.tag == "Player")
         {
+            if(MouseLaunch.haul != null) { return; }
+            MouseLaunch.haul = this;
             IsPickedUp=false;
+
             SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
 
             joint.connectedBody = collision.collider.GetComponentInParent<Rigidbody>();
             joint.spring = 500;
+            joint.minDistance = 1;
+            joint.maxDistance = 5;
         }
     }
 }

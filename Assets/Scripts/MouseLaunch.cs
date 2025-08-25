@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MouseLaunch : MonoBehaviour
@@ -9,10 +10,12 @@ public class MouseLaunch : MonoBehaviour
     public Transform cam;
     public float strength;
     public static bool IsLauching;
-    float maxTime = 3, timer = 0;
+    float maxTime = 4, timer = 0;
     public float minStrenght, maxStrength;
     public float possibleMaxSpring;
     public static float massMuliplier = 1;
+    public static Collideable haul;
+    public Transform anchorPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +36,12 @@ public class MouseLaunch : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            //IsLauching = true;
-            //mousebody.constraints = RigidbodyConstraints.None;
+            IsLauching = true;
+            mousebody.constraints = RigidbodyConstraints.FreezeRotation;
             strength = Mathf.Clamp(strength, minStrenght, maxStrength);
             timer = maxTime;
             mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
-            //Invoke("TESTESTEAOCIBEANC", 1.5f);
+            //Debug.DrawRay(cam.transform.position, cam.forward, Color.yellow, 5);
         }
 
         if (timer > 0)
@@ -53,8 +56,21 @@ public class MouseLaunch : MonoBehaviour
         }
     }
 
-    void TESTESTEAOCIBEANC()
+    private void OnTriggerEnter(Collider other)
     {
-        massMuliplier = 20;
+        if (other.gameObject.tag != "Food Zone")
+        {
+            return;
+        }
+        if (IsLauching && haul != null)
+        {
+            // DO MATH, ETC.
+            Destroy(haul.gameObject);
+            haul = null;
+        }
+        IsLauching = false;
+        anchorPoint.position = mousebody.gameObject.transform.position;
+        mousebody.velocity = Vector3.zero;
+        mousebody.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

@@ -19,11 +19,12 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         Look();
+        Debug.DrawRay(transform.position, transform.forward * 100, Color.cyan, 0.5f);
     }
 
     void Look()
     {
-        if (MouseLaunch.IsLauching) { return; } 
+        //if (MouseLaunch.IsLauching) { return; } 
         float mouseX = Input.GetAxis("Mouse X") * lookSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * lookSensitivity * Time.deltaTime;
         xRot -= mouseY;

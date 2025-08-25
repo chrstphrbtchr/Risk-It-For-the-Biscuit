@@ -19,7 +19,7 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         Look();
-        Debug.DrawRay(transform.position, transform.forward * 100, Color.cyan, 0.5f);
+        Debug.DrawRay(transform.position, transform.forward * 50, Color.cyan, 0.5f);
     }
 
     void Look()

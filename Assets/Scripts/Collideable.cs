@@ -21,8 +21,8 @@ public class Collideable : MonoBehaviour
 
             joint.connectedBody = collision.collider.GetComponentInParent<Rigidbody>();
             joint.spring = 500;
-            joint.minDistance = 1;
-            joint.maxDistance = 5;
+            joint.minDistance = 0.25f;
+            joint.maxDistance = 3;
         }
     }
 }

@@ -37,7 +37,7 @@ public class MouseLaunch : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             IsLauching = true;
-            mousebody.constraints = RigidbodyConstraints.FreezeRotation;
+            //mousebody.constraints = RigidbodyConstraints.FreezeRotation;
             strength = Mathf.Clamp(strength, minStrenght, maxStrength);
             timer = maxTime;
             mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
@@ -50,8 +50,8 @@ public class MouseLaunch : MonoBehaviour
             timer -= (Time.deltaTime / massMuliplier );
             timer = Mathf.Clamp(timer, 0, maxTime);
             float nowish = timer / maxTime;
-            spring.maxDistance = Mathf.Lerp(0, 50, nowish);
-            spring.minDistance = Mathf.Lerp(0, 10, nowish);
+            spring.maxDistance = Mathf.Lerp(0, 55, nowish);
+            spring.minDistance = Mathf.Lerp(0, 5, nowish);
             spring.spring = Mathf.Lerp(possibleMaxSpring, 10, nowish);
         }
     }
@@ -69,8 +69,7 @@ public class MouseLaunch : MonoBehaviour
             haul = null;
         }
         IsLauching = false;
-        anchorPoint.position = mousebody.gameObject.transform.position;
         mousebody.velocity = Vector3.zero;
-        mousebody.constraints = RigidbodyConstraints.FreezeAll;
+        //mousebody.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

@@ -2,9 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Collideable : MonoBehaviour
 {
-    bool IsPickedUp = false;
+    public Rigidbody rb;
+    public SpringJoint joint;
+    public ParticleSystem particles;
+    public bool IsPickedUp = false;
+    public float velocityBeforeDestruction;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (IsPickedUp)
@@ -17,12 +28,26 @@ public class Collideable : MonoBehaviour
             MouseLaunch.haul = this;
             IsPickedUp=false;
 
-            SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
+            joint = this.gameObject.AddComponent<SpringJoint>();
 
             joint.connectedBody = collision.collider.GetComponentInParent<Rigidbody>();
             joint.spring = 500;
             joint.minDistance = 0.25f;
             joint.maxDistance = 3;
+        }
+        else
+        {
+            BreakCollideable();
+        }
+    }
+
+    void BreakCollideable()
+    {
+        Debug.Log(rb.velocity.magnitude);
+        if (rb.velocity.magnitude > velocityBeforeDestruction)
+        {
+            Instantiate(particles, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
 }

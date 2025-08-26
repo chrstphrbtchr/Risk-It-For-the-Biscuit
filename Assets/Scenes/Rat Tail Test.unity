@@ -740,7 +740,7 @@ Transform:
   m_GameObject: {fileID: 288585728}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 8.57, z: 0}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1305,6 +1305,9 @@ MonoBehaviour:
   maxStrength: 100
   possibleMaxSpring: 35
   anchorPoint: {fileID: 1199831486}
+  throwForce: 0
+  throwMult: 50
+  maxThrowForce: 100
 --- !u!4 &543412228
 Transform:
   m_ObjectHideFlags: 0
@@ -3608,6 +3611,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25128790db951d499e678ae3951c953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  joint: {fileID: 0}
+  particles: {fileID: 6744336497091133885, guid: 2a9d91faa601d054390091bcfd032f12,
+    type: 3}
+  IsPickedUp: 0
+  velocityBeforeDestruction: 0.25
 --- !u!208 &1546430963
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6537,6 +6546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25128790db951d499e678ae3951c953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  joint: {fileID: 0}
+  particles: {fileID: 6744336497091133885, guid: 2a9d91faa601d054390091bcfd032f12,
+    type: 3}
+  IsPickedUp: 0
+  velocityBeforeDestruction: 2.5
 --- !u!54 &1802758160
 Rigidbody:
   m_ObjectHideFlags: 0

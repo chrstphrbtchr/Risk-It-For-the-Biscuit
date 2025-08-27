@@ -41,7 +41,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _noise_scale: 84.97
-    - _normal_str: 7.55
+    - _normal_str: 2.49
     - _smooth: 0.36
     - _tile_freq: 8
     m_Colors:

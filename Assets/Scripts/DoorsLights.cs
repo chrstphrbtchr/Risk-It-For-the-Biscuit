@@ -9,25 +9,31 @@ public class DoorsLights : MonoBehaviour
     public Quaternion rotateOnOpen;
     public float openingTime;
     Quaternion rotateOnClose, goalRotate, startRotate;
-    public bool isOpen = false;
+    public bool isOpen = false, testing;
     float thisRotateTime;
 
     void Start()
     {
+        if (doorHinge == null)  doorHinge = this.gameObject; 
         rotateOnClose = doorHinge.transform.rotation;
         goalRotate = rotateOnClose;
+        
     }
 
     private void Update()
     {
-        if (doorHinge.transform.rotation != goalRotate)
+        if (testing) { doorHinge.transform.rotation = rotateOnOpen; }
+        else
         {
-            float nowish = (thisRotateTime / openingTime);
-            doorHinge.transform.rotation = Quaternion.Slerp(startRotate, goalRotate, nowish);
-            thisRotateTime += Time.deltaTime;
+            if (doorHinge.transform.rotation != goalRotate)
+            {
+                float nowish = (thisRotateTime / openingTime);
+                doorHinge.transform.rotation = Quaternion.Slerp(startRotate, goalRotate, nowish);
+                thisRotateTime += Time.deltaTime;
+            }
+         
+              if (connectedLight != null) connectedLight.enabled = isOpen;
         }
-        else  
-          if (connectedLight != null)  connectedLight.enabled = isOpen; 
     }
 
     public void openDoor()

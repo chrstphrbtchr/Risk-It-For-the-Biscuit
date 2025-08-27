@@ -6,17 +6,22 @@ using UnityEngine.AI;
 public class CharacterNavigation : MonoBehaviour
 {
     NavMeshAgent myAgent;
-    Transform[] places;
+    public Transform[] places;
+    int placeIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
+        myAgent.SetDestination(places[placeIndex].position);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
-        
+        if (Vector3.Distance(transform.position, myAgent.destination) < 0.1f)
+        {
+            placeIndex++;
+            placeIndex = placeIndex % places.Length;
+            myAgent.SetDestination(places[placeIndex].position);
+        }
     }
 }

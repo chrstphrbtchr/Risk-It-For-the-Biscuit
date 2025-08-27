@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class MouseLaunch : MonoBehaviour
 {
+    Vector3 originalPosition;
     Rigidbody mousebody;
     SpringJoint spring;
     public Transform cam;
@@ -25,6 +25,7 @@ public class MouseLaunch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        originalPosition = transform.position;
         mousebody = GetComponent<Rigidbody>();   
         spring = GetComponent<SpringJoint>();
     }
@@ -156,6 +157,7 @@ public class MouseLaunch : MonoBehaviour
             {
                 // FAILSAFE
                 IsLaunching = false;
+                mousebody.gameObject.transform.position = originalPosition;
             }
         }
     }

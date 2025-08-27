@@ -64,12 +64,13 @@ public class MouseLaunch : MonoBehaviour
             
             strength = Mathf.Clamp(strength, minStrenght, maxStrength);
             timer = maxTime;
+            mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
+            strength = 0;
+            //mousebody.AddForceAtPosition(cam.forward *strength, mousebody.position, ForceMode.Impulse);
             //mousebody.constraints = RigidbodyConstraints.FreezeRotation;
             //Vector2 camcenter = new Vector2(Camera.main.scaledPixelWidth * 0.5f,Camera.main.scaledPixelHeight * 0.5f);
             //Vector3 testing = Camera.main.ScreenToWorldPoint(camcenter);
-
-            mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
-            strength = 0;
+            //Vector3 launchDirection = (anchorPoint.up - cam.forward).normalized;
             //Debug.DrawRay(cam.transform.position, cam.forward, Color.yellow, 5);
         }
     }
@@ -147,6 +148,7 @@ public class MouseLaunch : MonoBehaviour
             spring.maxDistance = Mathf.Lerp(0.2f, 55, nowish);
             spring.minDistance = Mathf.Lerp(0f, 5, nowish);
             spring.spring = Mathf.Lerp(possibleMaxSpring, 10, nowish);
+            mousebody.angularDrag = Mathf.Lerp(10, 0.05f, nowish);
         }
         else
         {

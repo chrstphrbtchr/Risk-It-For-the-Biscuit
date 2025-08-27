@@ -15,7 +15,17 @@ public class AnchorPointMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ShiftAnchorPoint();
+    }
+
+    void ShiftAnchorPoint()
+    {
+        if (MouseLaunch.IsLaunching)
+        {
+            return;
+        }
         //transform.rotation = viewport.rotation;
+        //transform.up = -viewport.forward;
         float apx = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float apz = Input.GetAxis("Vertical") * Time.deltaTime * speed;
 

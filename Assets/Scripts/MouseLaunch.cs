@@ -10,7 +10,7 @@ public class MouseLaunch : MonoBehaviour
     SpringJoint spring;
     public Transform cam;
     public float strength;
-    public static bool IsLauching;
+    public static bool IsLaunching;
     public static bool HasRock = true;
     public static bool IsThrowing;
     float maxTime = 4, timer = 0;
@@ -39,19 +39,28 @@ public class MouseLaunch : MonoBehaviour
 
     void Launch()
     {
-        // LAUNCH
-        if (Input.GetMouseButtonDown(0))
+        if (!IsLaunching)
         {
-            //mousebody.constraints = RigidbodyConstraints.FreezeAll;
-            strength = 10;
+            // LAUNCH
+            if (Input.GetMouseButtonDown(0))
+            {
+                //mousebody.constraints = RigidbodyConstraints.FreezeAll;
+                strength = 10;
+            }
+            if (Input.GetMouseButton(0))
+            {
+                strength += Time.deltaTime * 25;
+            }
         }
-        if (Input.GetMouseButton(0))
+        
+
+        if (Input.GetMouseButtonUp(0) || strength > maxStrength)
         {
-            strength += Time.deltaTime * 25;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            IsLauching = true;
+            if (IsLaunching)
+            {
+                return;
+            }
+            IsLaunching = true;
             
             strength = Mathf.Clamp(strength, minStrenght, maxStrength);
             timer = maxTime;
@@ -60,6 +69,7 @@ public class MouseLaunch : MonoBehaviour
             //Vector3 testing = Camera.main.ScreenToWorldPoint(camcenter);
 
             mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
+            strength = 0;
             //Debug.DrawRay(cam.transform.position, cam.forward, Color.yellow, 5);
         }
     }
@@ -83,7 +93,7 @@ public class MouseLaunch : MonoBehaviour
         }
         
         // THROW WHATEVER
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) || throwForce > maxThrowForce)
         {
             if (!IsThrowing)
             {
@@ -101,6 +111,7 @@ public class MouseLaunch : MonoBehaviour
                 Destroy(haul.joint);
                 haul.joint = null;
                 haul.rb.velocity = Vector3.zero;
+                haul.rb.angularDrag = 0.05f;
                 haul.rb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
                 haul.isPickedUp = false;
                 haul.isThrown = true;
@@ -121,6 +132,7 @@ public class MouseLaunch : MonoBehaviour
             {
                 // sad noise
             }
+            throwForce = 0;
         }
     }
 
@@ -132,25 +144,33 @@ public class MouseLaunch : MonoBehaviour
             timer -= (Time.deltaTime / massMuliplier);
             timer = Mathf.Clamp(timer, 0, maxTime);
             float nowish = timer / maxTime;
-            spring.maxDistance = Mathf.Lerp(0, 55, nowish);
-            spring.minDistance = Mathf.Lerp(0, 5, nowish);
+            spring.maxDistance = Mathf.Lerp(0.2f, 55, nowish);
+            spring.minDistance = Mathf.Lerp(0f, 5, nowish);
             spring.spring = Mathf.Lerp(possibleMaxSpring, 10, nowish);
+        }
+        else
+        {
+            if (IsLaunching)
+            {
+                // FAILSAFE
+                IsLaunching = false;
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Food Zone")
+        if (other.gameObject.tag != "Food Zone")    // Change to whatever?
         {
             return;
         }
-        if (IsLauching && haul != null)
+        if (IsLaunching && haul != null)
         {
             // DO MATH, ETC.
             Destroy(haul.gameObject);
             haul = null;
         }
-        IsLauching = false;
+        IsLaunching = false;
         mousebody.velocity = Vector3.zero;
         //mousebody.constraints = RigidbodyConstraints.FreezeAll;
     }

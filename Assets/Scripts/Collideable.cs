@@ -33,7 +33,8 @@ public class Collideable : MonoBehaviour
             joint.connectedBody = collision.collider.GetComponentInParent<Rigidbody>();
             joint.spring = 500;
             joint.minDistance = 0.25f;
-            joint.maxDistance = 3;
+            joint.maxDistance = 1.5f;
+            rb.angularDrag = 5;
         }
         else
         {

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Food Zone
+  - Anchor Point
   layers:
   - Default
   - TransparentFX

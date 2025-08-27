@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -740,7 +740,7 @@ Transform:
   m_GameObject: {fileID: 288585728}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 8.57, z: 0}
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1256,7 +1256,7 @@ SpringJoint:
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 10
   m_ConnectedMassScale: 1
@@ -1305,6 +1305,10 @@ MonoBehaviour:
   maxStrength: 100
   possibleMaxSpring: 35
   anchorPoint: {fileID: 1199831486}
+  throwForce: 0
+  throwMult: 50
+  maxThrowForce: 100
+  rock: {fileID: 0}
 --- !u!4 &543412228
 Transform:
   m_ObjectHideFlags: 0
@@ -2784,11 +2788,10 @@ GameObject:
   - component: {fileID: 1199831484}
   - component: {fileID: 1199831483}
   - component: {fileID: 1199831481}
-  - component: {fileID: 1199831482}
   - component: {fileID: 1199831487}
   m_Layer: 0
   m_Name: Anchor Point
-  m_TagString: Untagged
+  m_TagString: Anchor Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2816,34 +2819,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 116
   m_CollisionDetection: 0
---- !u!145 &1199831482
-SpringJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199831480}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 1, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 1, z: 0}
-  serializedVersion: 2
-  m_Spring: 10
-  m_Damper: 0.2
-  m_MinDistance: 0
-  m_MaxDistance: 0
-  m_Tolerance: 0.025
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!136 &1199831483
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3608,6 +3587,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25128790db951d499e678ae3951c953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  joint: {fileID: 0}
+  particles: {fileID: 6744336497091133885, guid: 2a9d91faa601d054390091bcfd032f12,
+    type: 3}
+  isPickedUp: 0
+  isThrown: 0
+  velocityBeforeDestruction: 0.25
 --- !u!208 &1546430963
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6537,6 +6523,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25128790db951d499e678ae3951c953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  joint: {fileID: 0}
+  particles: {fileID: 6744336497091133885, guid: 2a9d91faa601d054390091bcfd032f12,
+    type: 3}
+  isPickedUp: 0
+  isThrown: 0
+  velocityBeforeDestruction: 2.5
 --- !u!54 &1802758160
 Rigidbody:
   m_ObjectHideFlags: 0

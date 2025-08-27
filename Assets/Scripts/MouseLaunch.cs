@@ -21,6 +21,7 @@ public class MouseLaunch : MonoBehaviour
     public Transform anchorPoint;
     public float throwForce = 0, throwMult = 5000;
     public float maxThrowForce = 1000;
+    public GameObject rock;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +56,9 @@ public class MouseLaunch : MonoBehaviour
             strength = Mathf.Clamp(strength, minStrenght, maxStrength);
             timer = maxTime;
             //mousebody.constraints = RigidbodyConstraints.FreezeRotation;
+            //Vector2 camcenter = new Vector2(Camera.main.scaledPixelWidth * 0.5f,Camera.main.scaledPixelHeight * 0.5f);
+            //Vector3 testing = Camera.main.ScreenToWorldPoint(camcenter);
+
             mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
             //Debug.DrawRay(cam.transform.position, cam.forward, Color.yellow, 5);
         }
@@ -62,39 +66,61 @@ public class MouseLaunch : MonoBehaviour
 
     void Throw()
     {
-        // THROW BAKED GOODS
-        if (haul != null)
+        // Charge throw for everything
+        if (Input.GetKey(KeyCode.Space) && IsThrowing)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            throwForce += Time.deltaTime * throwMult;
+            throwForce = Mathf.Clamp(throwForce, 1, maxThrowForce);
+        }
+
+        // BEGIN THROW BAKED GOODS / ROCKS
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (haul != null || HasRock)
             {
                 IsThrowing = true;
             }
-            if (Input.GetKey(KeyCode.Space))
-            {
-                if (IsThrowing)
-                {
-                    throwForce += Time.deltaTime * throwMult;
-                    throwForce = Mathf.Clamp(throwForce, 1, maxThrowForce);
-                }
-            }
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                if (IsThrowing)
-                {
-                    Destroy(haul.joint);
-                    haul.joint = null;
-                    haul.rb.velocity = Vector3.zero;
-                    haul.rb.AddForce(cam.forward * throwForce, ForceMode.Impulse);
-                    haul.IsPickedUp = false;
-                    haul = null;
-                    IsThrowing = false;
-                    Debug.Log("<color=cyan>So long-a, Bowser!</color>");
-                }
-            }
         }
-        else
+        
+        // THROW WHATEVER
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            // THROW ROCK
+            if (!IsThrowing)
+            {
+                return;
+            }
+
+            if(haul != null)
+            {
+                Vector3 throwDirection = cam.forward;
+                RaycastHit hit;
+                if (Physics.Raycast(cam.position, cam.forward, out hit, 100))
+                {
+                    throwDirection = (hit.transform.position - haul.transform.position).normalized;
+                }
+                Destroy(haul.joint);
+                haul.joint = null;
+                haul.rb.velocity = Vector3.zero;
+                haul.rb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
+                haul.isPickedUp = false;
+                haul.isThrown = true;
+                haul = null;
+                IsThrowing = false;
+                Debug.Log("<color=cyan>So long-a, Bowser!</color>");
+            }
+            else if (HasRock)
+            {
+                HasRock = false;
+                GameObject newRock = Instantiate(rock, transform.position, Quaternion.identity);
+                Rigidbody rockybody = newRock.GetComponent<Rigidbody>();
+                rockybody.AddForce(cam.forward * throwForce, ForceMode.Impulse);
+                IsThrowing = false;
+                Debug.Log("<color=magenta>I wanna rock (rock)</color>");
+            }
+            else
+            {
+                // sad noise
+            }
         }
     }
 

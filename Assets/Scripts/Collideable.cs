@@ -8,7 +8,7 @@ public class Collideable : MonoBehaviour
     public Rigidbody rb;
     public SpringJoint joint;
     public ParticleSystem particles;
-    public bool IsPickedUp = false;
+    public bool isPickedUp = false, isThrown = false;
     public float velocityBeforeDestruction;
 
     private void Start()
@@ -18,7 +18,7 @@ public class Collideable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (IsPickedUp)
+        if (isPickedUp)
         {
             return;
         }
@@ -26,7 +26,7 @@ public class Collideable : MonoBehaviour
         {
             if(MouseLaunch.haul != null) { return; }
             MouseLaunch.haul = this;
-            IsPickedUp=false;
+            isPickedUp=false;
 
             joint = this.gameObject.AddComponent<SpringJoint>();
 
@@ -37,7 +37,11 @@ public class Collideable : MonoBehaviour
         }
         else
         {
-            BreakCollideable();
+            if (isThrown)
+            {
+                BreakCollideable();
+            }
+            
         }
     }
 

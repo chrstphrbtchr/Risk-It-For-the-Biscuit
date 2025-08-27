@@ -1,0 +1,12 @@
+If you are using URP, please convert the materials from built-in to URP first.
+
+This can be achieved as follows:
+- Open the Render Pipeline Converter (can be found under Window -> Rendering -> Render Pipeline Converter)
+    - In the Render Pipeline Converter window, select the "Material Upgrade" and then click on "Convert Assets" (or "Initialize Converters" first)
+
+After that, the materials should be displayed correctly.
+
+For any questions or feedback, please write an email to "unboringfuture@gmail.com".
+
+Enjoy the Asset!
+Unboring Future

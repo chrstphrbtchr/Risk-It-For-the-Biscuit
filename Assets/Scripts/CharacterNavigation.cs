@@ -24,9 +24,14 @@ public class CharacterNavigation : MonoBehaviour
     private void Update()
     {
         CharacterStateMachine();
-        if (myAgent.navMeshOwner.GetType() == typeof(NavMeshLink))
+        if (myAgent.navMeshOwner is NavMeshLink && currentCharacterState != NPC_State.Jumping)
         {
-            print("!!");
+            currentCharacterState = NPC_State.Jumping;
+        }
+        if (myAgent.navMeshOwner is not NavMeshLink && currentCharacterState == NPC_State.Jumping)
+        {
+            //currentCharacterState = NPC_State.Standing;
+            currentCharacterState = NPC_State.Walking;  // FOR NOW.
         }
     }
 

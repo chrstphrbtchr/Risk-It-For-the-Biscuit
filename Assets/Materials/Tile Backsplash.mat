@@ -60,7 +60,7 @@ Material:
     - _tile_density: 9.27
     - _tile_smooth: 1.5
     m_Colors:
-    - _grout_color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 0}
+    - _grout_color: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 0}
     - _tile_color: {r: 0.22312212, g: 0.2612012, b: 0.4339623, a: 0}
     - _tile_density: {r: 80.56, g: 25, b: 0, a: 0}
   m_BuildTextureStacks: []

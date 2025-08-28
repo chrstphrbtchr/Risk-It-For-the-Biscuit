@@ -9,6 +9,7 @@ public class CharacterNavigation : MonoBehaviour
     public NPC_State currentCharacterState = NPC_State.Standing;
     NavMeshAgent myAgent;
     public Transform[] places;
+    public float maxDistanceFromPoint;
     // public Distraction currentDistraction = null;
     int placeIndex = 0;
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class CharacterNavigation : MonoBehaviour
     {
         myAgent = GetComponent<NavMeshAgent>();
         myAgent.SetDestination(places[placeIndex].position);
+        currentCharacterState = NPC_State.Walking;
     }
 
     private void Update()
@@ -40,11 +42,12 @@ public class CharacterNavigation : MonoBehaviour
             case NPC_State.Standing:
                 break;
             case NPC_State.Walking:
-                if (Vector3.Distance(transform.position, myAgent.destination) < 0.1f)
+                if (Vector3.Distance(transform.position, myAgent.destination) < maxDistanceFromPoint)
                 {
                     placeIndex++;
                     placeIndex = placeIndex % places.Length;
                     myAgent.SetDestination(places[placeIndex].position);
+                    print(placeIndex);
                 }
                 break;
             case NPC_State.Working:

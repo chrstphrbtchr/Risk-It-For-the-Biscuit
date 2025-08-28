@@ -47,7 +47,7 @@ public class CharacterNavigation : MonoBehaviour
                     placeIndex++;
                     placeIndex = placeIndex % places.Length;
                     myAgent.SetDestination(places[placeIndex].position);
-                    print(placeIndex);
+                    //print(placeIndex);
                 }
                 break;
             case NPC_State.Working:

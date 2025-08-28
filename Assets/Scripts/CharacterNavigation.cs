@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class CharacterNavigation : MonoBehaviour
 {
-    public enum NPC_State {Walking, Standing, Investigating, Working, Sleeping, Huh, Angry, Fixing}
+    public enum NPC_State {Walking, Standing, Investigating, Working, Sleeping, Huh, Angry, Fixing, Jumping}
     public NPC_State currentCharacterState = NPC_State.Standing;
     NavMeshAgent myAgent;
     public Transform[] places;
@@ -23,6 +24,10 @@ public class CharacterNavigation : MonoBehaviour
     private void Update()
     {
         CharacterStateMachine();
+        if (myAgent.navMeshOwner.GetType() == typeof(NavMeshLink))
+        {
+            print("!!");
+        }
     }
 
     void CharacterStateMachine()
@@ -51,6 +56,8 @@ public class CharacterNavigation : MonoBehaviour
                 }
                 break;
             case NPC_State.Working:
+                break;
+            case NPC_State.Jumping:
                 break;
             default:
                 break;
@@ -88,6 +95,9 @@ public class CharacterNavigation : MonoBehaviour
                 answer = false;
                 break;
             case NPC_State.Huh:
+                break;
+            case NPC_State.Jumping:
+                answer = false;
                 break;
             default:
                 break;

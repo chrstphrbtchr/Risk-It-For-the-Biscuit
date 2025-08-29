@@ -9,21 +9,32 @@ public class CharacterNavigation : MonoBehaviour
     public enum NPC_State {Walking, Standing, Investigating, Working, Sleeping, Huh, Angry, Fixing, Jumping}
     public NPC_State currentCharacterState = NPC_State.Standing;
     NavMeshAgent myAgent;
-    public Transform[] places;
+    public CharacterTask[] tasks;
     public float maxDistanceFromPoint;
+    public float turningDistanceFromPoint = 1;
+    public bool isCat;  // Sloppy but what do you expect it's a game jam! <3
+    public Distractable currentDistraction;
     // public Distraction currentDistraction = null;
-    int placeIndex = 0;
+    int taskIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
-        myAgent.SetDestination(places[placeIndex].position);
-        currentCharacterState = NPC_State.Walking;
+        GoToNextPlace(false);
+        ChangeState(NPC_State.Walking);
     }
 
     private void Update()
     {
         CharacterStateMachine();
+        if (isCat)
+        {
+            Jump();
+        }
+    }
+
+    void Jump()
+    {
         if (myAgent.navMeshOwner is NavMeshLink && currentCharacterState != NPC_State.Jumping)
         {
             currentCharacterState = NPC_State.Jumping;
@@ -31,7 +42,7 @@ public class CharacterNavigation : MonoBehaviour
         if (myAgent.navMeshOwner is not NavMeshLink && currentCharacterState == NPC_State.Jumping)
         {
             //currentCharacterState = NPC_State.Standing;
-            currentCharacterState = NPC_State.Walking;  // FOR NOW.
+            ChangeState(NPC_State.Walking); // FOR NOW.
         }
     }
 
@@ -44,19 +55,39 @@ public class CharacterNavigation : MonoBehaviour
             case NPC_State.Fixing:
                 break;
             case NPC_State.Huh:
+                // STANDING BUT LEADS INTO INVESTIGATING INSTEAD OF WORKING / SLEEPING
                 break;
             case NPC_State.Investigating:
-                break;
+                if (myAgent.remainingDistance < maxDistanceFromPoint)
+                {
+                    // ARRIVED AT DISTRACTION
+                }
+                else
+                {
+
+                }
+                    break;
             case NPC_State.Sleeping:
                 break;
             case NPC_State.Standing:
+                if (myAgent.remainingDistance < maxDistanceFromPoint)
+                {
+                    Vector3 taskpos = tasks[taskIndex].transform.position;
+                    Vector3 looking = new Vector3(taskpos.x, transform.position.y, taskpos.z);
+                    transform.LookAt(looking);
+                    tasks[taskIndex].BeginCharacterTask(this);
+                    ChangeState(NPC_State.Working);
+                }
+                else
+                {
+                    ChangeState(NPC_State.Walking);
+                }
                 break;
             case NPC_State.Walking:
-                if (Vector3.Distance(transform.position, myAgent.destination) < maxDistanceFromPoint)
+                if (myAgent.remainingDistance < maxDistanceFromPoint)
                 {
-                    placeIndex++;
-                    placeIndex = placeIndex % places.Length;
-                    myAgent.SetDestination(places[placeIndex].position);
+                    ChangeState(NPC_State.Standing);
+                    
                     //print(placeIndex);
                 }
                 break;
@@ -108,5 +139,19 @@ public class CharacterNavigation : MonoBehaviour
                 break;
         }
         return answer;
+    }
+
+    public void GoToNextPlace(bool charInterrupted)
+    {
+        if (charInterrupted)
+        {
+            myAgent.SetDestination(currentDistraction.distractionFixLocation.position);
+        }
+        else
+        {
+            taskIndex++;
+            taskIndex = taskIndex % tasks.Length;
+            myAgent.SetDestination(tasks[taskIndex].transform.position);
+        }
     }
 }

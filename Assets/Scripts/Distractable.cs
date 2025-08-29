@@ -19,12 +19,12 @@ public class Distractable : MonoBehaviour
 
     public void BeginToDistract()
     {
-
+        StartCoroutine("Distract");
     }
 
     public void BeginFixDistraction()
     {
-
+        StartCoroutine("Fix");
     }
 
     IEnumerator Distract()
@@ -35,7 +35,18 @@ public class Distractable : MonoBehaviour
 
     IEnumerator Fix()
     {
+        currentlyBeingFixedBy.ChangeState(CharacterNavigation.NPC_State.Fixing);
+        if (currentlyBeingFixedBy.isCat)
+        {
+            //set animation for cat
+        }
+        else
+        {
+            // set animation for chef
+        }
         yield return new WaitForSeconds(timeOfDistraction);
+        currentlyBeingFixedBy.ChangeState(CharacterNavigation.NPC_State.Standing);
+        currentlyBeingFixedBy.GoToNextPlace(false);
         yield return null;
     }
 }

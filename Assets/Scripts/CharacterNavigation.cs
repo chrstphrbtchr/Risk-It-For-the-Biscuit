@@ -50,7 +50,7 @@ public class CharacterNavigation : MonoBehaviour
     {
         switch (currentCharacterState)
         {
-            case NPC_State.Angry:
+            case NPC_State.Angry:   // UNNECESSARY?!
                 break;
             case NPC_State.Fixing:
                 break;
@@ -70,13 +70,13 @@ public class CharacterNavigation : MonoBehaviour
             case NPC_State.Sleeping:
                 break;
             case NPC_State.Standing:
-                if (myAgent.remainingDistance < maxDistanceFromPoint)
+                if (myAgent.remainingDistance < myAgent.stoppingDistance)
                 {
-                    Vector3 taskpos = tasks[taskIndex].transform.position;
-                    Vector3 looking = new Vector3(taskpos.x, transform.position.y, taskpos.z);
-                    transform.LookAt(looking);
-                    tasks[taskIndex].BeginCharacterTask(this);
+                    //Vector3 taskpos = tasks[taskIndex].transform.forward;
+                    //Vector3 looking = new Vector3(taskpos.x, transform.position.y, taskpos.z);
+                    //transform.LookAt(looking);
                     ChangeState(NPC_State.Working);
+                    tasks[taskIndex].BeginCharacterTask(this);
                 }
                 else
                 {
@@ -92,6 +92,7 @@ public class CharacterNavigation : MonoBehaviour
                 }
                 break;
             case NPC_State.Working:
+                // myAgent.isStopped = true;
                 break;
             case NPC_State.Jumping:
                 break;
@@ -108,6 +109,7 @@ public class CharacterNavigation : MonoBehaviour
             return;
         }
         currentCharacterState = newState;
+        // Change animations here!
     }
 
     bool ShouldOverrideState(NPC_State newState)
@@ -141,17 +143,31 @@ public class CharacterNavigation : MonoBehaviour
         return answer;
     }
 
-    public void GoToNextPlace(bool charInterrupted)
+    public IEnumerator GoToNextPlace(bool charInterrupted)
     {
         if (charInterrupted)
         {
             myAgent.SetDestination(currentDistraction.distractionFixLocation.position);
+            while (Mathf.Abs(Vector3.Angle(transform.forward.normalized, currentDistraction.distractionFixLocation.forward.normalized)) > 0.1f)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, currentDistraction.distractionFixLocation.rotation, 0.5f);
+                yield return null;
+            }
         }
         else
         {
             taskIndex++;
             taskIndex = taskIndex % tasks.Length;
+            while (Mathf.Abs(Vector3.Angle(transform.forward.normalized, tasks[taskIndex].transform.forward.normalized)) > 0.1f)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, tasks[taskIndex].transform.rotation, 0.5f);
+                yield return null;
+            }
             myAgent.SetDestination(tasks[taskIndex].transform.position);
+            ChangeState(NPC_State.Walking);
         }
+
+        
+        yield return null;
     }
 }

@@ -983,7 +983,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 68a5594a8b3907e44ada785d710a9044, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1049,20 +1049,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCharacterState: 1
-  places:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  tasks: []
   maxDistanceFromPoint: 0.1
+  turningDistanceFromPoint: 1
+  isCat: 0
+  currentDistraction: {fileID: 0}
 --- !u!1 &2772693402542645227
 GameObject:
   m_ObjectHideFlags: 0

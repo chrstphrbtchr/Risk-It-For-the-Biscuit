@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Distractable : MonoBehaviour
 {
+    [Tooltip("True if in use")]
     public bool isCurrentlyDistracting = false;
+    [Tooltip("The location the character will stand and the direction they will be looking.")]
     public Transform distractionFixLocation;
+    [Tooltip("Amount of time a character will be distracted by this distraction")]
     public float timeOfDistraction;
+    [Tooltip("How far out the Raycast or whatever will go.")]
     public float distanceOfDistraction;
+    [Tooltip("The velocity of the other object needed to cause a distraction.")]
+    public float distractabilityThreshold;
     public CharacterNavigation currentlyBeingFixedBy;
+    [Header("Animation Parameters for Characters")]
     public int animationParameterForBakerOnFix;
     public int animationParameterForCatOnFix;
 
@@ -48,5 +55,14 @@ public class Distractable : MonoBehaviour
         currentlyBeingFixedBy.ChangeState(CharacterNavigation.NPC_State.Standing);
         currentlyBeingFixedBy.GoToNextPlace(false);
         yield return null;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            // Gives the player enough time to bounce out.
+            Invoke("BeginToDistract", 1);
+        }
     }
 }

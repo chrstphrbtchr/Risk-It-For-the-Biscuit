@@ -22,6 +22,7 @@ public class Collideable : MonoBehaviour
         {
             return;
         }
+
         if(collision.collider.gameObject.tag == "Player")
         {
             if(MouseLaunch.haul != null) { return; }
@@ -40,6 +41,18 @@ public class Collideable : MonoBehaviour
         {
             if (isThrown)
             {
+                if(collision.gameObject.tag == "Distraction")
+                {
+                    Distractable dis = collision.gameObject.GetComponent<Distractable>();
+                    if (dis==null) { Debug.LogWarning("NO SUCH DISTRACTABLE"); return; }
+                    dis.BeginToDistract();
+                }
+
+                if(collision.gameObject.tag == "Character")
+                {
+                    // Do something else!
+                }
+
                 BreakCollideable();
             }
             
@@ -48,6 +61,7 @@ public class Collideable : MonoBehaviour
 
     void BreakCollideable()
     {
+        // Create a distraction orb or raycast or whatever we're doing HERE
         Debug.Log(rb.velocity.magnitude);
         if (rb.velocity.magnitude > velocityBeforeDestruction)
         {

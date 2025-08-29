@@ -37,7 +37,12 @@ public class StandMixer : MonoBehaviour
         doughHook.transform.Rotate(0, 0, currentMixSpeed);
     }
 
- 
+    private void OnCollisionEnter(Collision collision)
+    {
+        ToggleMixer();
+    }
+
+
 
 
     public void TurnOnMixer() => mixerOn = true;

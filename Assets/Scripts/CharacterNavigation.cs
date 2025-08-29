@@ -15,10 +15,19 @@ public class CharacterNavigation : MonoBehaviour
     public bool isCat;  // Sloppy but what do you expect it's a game jam! <3
     public Distractable currentDistraction;
     // public Distraction currentDistraction = null;
+    public static CharacterNavigation[] DistractibleCharacters = new CharacterNavigation[2];
     int taskIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
+        if(isCat || DistractibleCharacters[0] != null)
+        {
+            DistractibleCharacters[1] = this;
+        }
+        else
+        {
+            DistractibleCharacters[0] = this;
+        }
         myAgent = GetComponent<NavMeshAgent>();
         GoToNextPlace(false);
         ChangeState(NPC_State.Walking);

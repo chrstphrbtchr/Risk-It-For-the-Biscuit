@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(NavMeshObstacle))]
 public class Collideable : MonoBehaviour
 {
     public Rigidbody rb;
@@ -16,6 +17,7 @@ public class Collideable : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        GetComponent<NavMeshObstacle>().carving = true;
     }
 
     private void OnCollisionEnter(Collision collision)

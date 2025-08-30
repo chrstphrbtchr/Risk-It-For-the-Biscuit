@@ -181,6 +181,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 2.37
+  displayName: Swiss Roll
 --- !u!114 &-5730233385364782620
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -176,6 +176,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 2.09
+  displayName: Pretzel
 --- !u!114 &3549567711276570129
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,8 +9,9 @@ public class ReturnZone : MonoBehaviour
     public MouseLaunch Player;
     public int haulsReturned = 0;
     public float weightOfHauls = 0;
-    public TMP_Text weightGathered;
+    public TMP_Text weightGathered, acquiredText;
     public Image weightIcon;
+    public GameObject acquiredSquare;
     // Start is called before the first frame update
 
 
@@ -21,6 +22,7 @@ public class ReturnZone : MonoBehaviour
             haulsReturned++;
             weightOfHauls += MouseLaunch.haul.rb.mass;
             weightGathered.text = $"{weightOfHauls} KG Gathered";
+            acquiredText.text = $"{MouseLaunch.haul.displayName} Gathered";
             MouseLaunch.haul.gameObject.SetActive(false);
             MouseLaunch.haul = null;
             StartCoroutine(flashWeight());
@@ -29,11 +31,16 @@ public class ReturnZone : MonoBehaviour
 
     IEnumerator flashWeight()
     {
+
+        acquiredSquare.SetActive(true);
         Color orig = weightIcon.color;
         weightIcon.color = Color.white;
         weightGathered.color = Color.black;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         weightIcon.color = orig;
-        weightGathered.color = Color.white ;
+        weightGathered.color = Color.white;
+        acquiredSquare.SetActive(false);
     }
+
+
 }

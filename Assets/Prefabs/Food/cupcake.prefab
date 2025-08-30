@@ -176,6 +176,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 0
+  displayName: Cupcake
 --- !u!114 &-5297520963541252848
 MonoBehaviour:
   m_ObjectHideFlags: 0

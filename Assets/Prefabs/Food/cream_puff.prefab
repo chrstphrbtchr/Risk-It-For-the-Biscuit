@@ -176,6 +176,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 0
+  displayName: Cream Puff
 --- !u!114 &-8275967789757053497
 MonoBehaviour:
   m_ObjectHideFlags: 0

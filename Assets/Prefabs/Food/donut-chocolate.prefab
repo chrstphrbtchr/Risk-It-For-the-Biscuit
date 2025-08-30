@@ -155,6 +155,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 0
+  displayName: Chocolate Donut
 --- !u!65 &3008702389076413638
 BoxCollider:
   m_ObjectHideFlags: 0

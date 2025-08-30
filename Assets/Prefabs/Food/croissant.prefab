@@ -155,6 +155,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 10.88
+  displayName: Croissant
 --- !u!65 &8513733949248810400
 BoxCollider:
   m_ObjectHideFlags: 0

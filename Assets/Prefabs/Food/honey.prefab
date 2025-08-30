@@ -156,6 +156,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 2.26
+  displayName: Honeu Pot
 --- !u!114 &6311238213574178783
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -156,6 +156,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 2.83
+  displayName: Pie
 --- !u!114 &-8049329665815053910
 MonoBehaviour:
   m_ObjectHideFlags: 0

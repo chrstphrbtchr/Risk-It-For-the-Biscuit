@@ -176,6 +176,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 0.69
+  displayName: Macaron
 --- !u!114 &-3024297527527925950
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Collideable : MonoBehaviour
     public ParticleSystem particles;
     public bool isPickedUp = false, isThrown = false;
     public float velocityBeforeDestruction;
+    public string displayName;
 
     private void Start()
     {

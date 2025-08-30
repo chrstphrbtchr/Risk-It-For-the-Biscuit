@@ -177,6 +177,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 0
+  displayName: Banana
 --- !u!114 &4457121964965584812
 MonoBehaviour:
   m_ObjectHideFlags: 0

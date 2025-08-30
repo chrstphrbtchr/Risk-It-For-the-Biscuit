@@ -176,6 +176,7 @@ MonoBehaviour:
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 0
+  displayName: Sprinkle Donut
 --- !u!114 &-3386662745095005830
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -84,19 +84,17 @@ public class Collideable : MonoBehaviour
 
     void CreateNewDistraction()
     {
-        if (ShouldBreak())
-        {
-            GameObject g = new GameObject("Distraction");
-            g.transform.position = this.transform.position;
-            Distractable d = g.AddComponent<Distractable>();
-            d.continuedDistraction = false;
-            d.isCurrentlyDistracting = true;
-            d.distanceOfDistraction = this.rb.velocity.magnitude;
-            d.distanceOfDistraction = 9999; // TESTINMG DELETEM E
-            
-            //d.animationParameterForBakerOnFix = 0;
-            //d.animationParameterForCatOnFix = 0;
-            d.BeginToDistract();
-        }
+        GameObject g = new GameObject("Distraction");
+        g.transform.position = this.transform.position;
+        Distractable d = g.AddComponent<Distractable>();
+        d.continuedDistraction = false;
+        d.isCurrentlyDistracting = true;
+        d.distanceOfDistraction = this.rb.velocity.magnitude * (ShouldBreak() ? 100 : 1);
+        //d.distanceOfDistraction = 9999; // TESTINMG DELETEM E
+
+        //d.animationParameterForBakerOnFix = 0;
+        //d.animationParameterForCatOnFix = 0;
+        d.BeginToDistract();
+        
     }
 }

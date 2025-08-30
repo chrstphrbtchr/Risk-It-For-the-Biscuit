@@ -13,7 +13,7 @@ public class MouseLaunch : MonoBehaviour
     public static bool IsLaunching;
     public static bool HasRock = true;
     public static bool IsThrowing;
-   public float maxTime = 6, timer = 0;
+    public float maxTime = 6, timer = 0;
     public float minStrenght, maxStrength, initStrength, strengthPerSecond;
     public float possibleMaxSpring, possibleMinSpring, springAbsMax, springAbsMin;
     public static float massMuliplier = 1f;
@@ -150,8 +150,8 @@ public class MouseLaunch : MonoBehaviour
             else 
             {
                 float timeAndDistance = Mathf.Clamp((maxInverseDistance - Mathf.Abs(Vector3.Distance(this.transform.position, originalPosition)) * Time.deltaTime), Time.deltaTime, 1);
-              //  massMuliplier = Mathf.Clamp(massMuliplier, 1, 25);
-               if (haul != null) timeAndDistance = timeAndDistance/haul.rb.mass;
+                //  massMuliplier = Mathf.Clamp(massMuliplier, 1, 25);
+                if (haul != null) timeAndDistance = timeAndDistance/haul.rb.mass;
                 
                 timer -= timeAndDistance;
             }

@@ -4,17 +4,39 @@ using UnityEngine;
 
 public class Suspicion : MonoBehaviour
 {
-    public float maximumSus;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    static float maximumSus = 50;
+    static float currentSus;
+    public Transform mouse;
+    public float margin;    //1 is perfect, 0 is bad, so it should be something like 0.75f
+    public float maxDist = 5;
 
     // Update is called once per frame
     void Update()
     {
-        
+        LookingAtPlayer();
+    }
+
+    void LookingAtPlayer()
+    {
+        if(mouse == null || !MouseLaunch.IsLaunching)
+        {
+            return;
+        }
+        Vector3 dir = (mouse.position - transform.position).normalized;
+        float dotProd = Vector3.Dot(dir, transform.forward);
+        if (dotProd >= margin)
+        {
+            float dist = Vector3.Distance(transform.position, mouse.position);
+            if (dist < 5)
+            {
+                currentSus += (5 - dist) * Time.deltaTime;
+            }
+            
+        }
+        print(currentSus);
+        if(currentSus >= maximumSus)
+        {
+            Debug.Log("GAME OVER MAN");
+        }
     }
 }

@@ -46,7 +46,10 @@ public class Distractable : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(this.transform.position, v.normalized, out hit, distanceOfDistraction))
             {
-                if (cur = null) { cur = c; }
+                if (cur == null)
+                {
+                    cur = c;
+                }
                 else if (v.magnitude > (cur.transform.position - this.transform.position).magnitude)
                 {
                     cur = c;

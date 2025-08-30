@@ -191,6 +191,7 @@ public class CharacterNavigation : MonoBehaviour
         {
             taskIndex++;
             taskIndex = taskIndex % tasks.Length;
+            Debug.LogFormat("{0} is going to {1}", this.gameObject.name, tasks[taskIndex].name);
             while (Mathf.Abs(Vector3.Angle(transform.forward.normalized, tasks[taskIndex].transform.forward.normalized)) > 0.1f)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, tasks[taskIndex].transform.rotation, 0.5f);

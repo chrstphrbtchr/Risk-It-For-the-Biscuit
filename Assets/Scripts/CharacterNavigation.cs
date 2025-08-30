@@ -65,17 +65,33 @@ public class CharacterNavigation : MonoBehaviour
                 break;
             case NPC_State.Huh:
                 // STANDING BUT LEADS INTO INVESTIGATING INSTEAD OF WORKING / SLEEPING
+                myAgent.isStopped = true;
+                if(currentDistraction != null)
+                {
+                    myAgent.SetDestination(currentDistraction.distractionFixLocation.position);
+                    ChangeState(NPC_State.Investigating);
+                }
+                else
+                {
+                    ChangeState(NPC_State.Walking);
+                }
+                // Turn into IENUM?
+                myAgent.isStopped = false;
                 break;
             case NPC_State.Investigating:
                 if (myAgent.remainingDistance < maxDistanceFromPoint)
                 {
                     // ARRIVED AT DISTRACTION
+                    if(currentDistraction != null)
+                    {
+                        currentDistraction.BeginFixDistraction();
+                    }
                 }
                 else
                 {
 
                 }
-                    break;
+                break;
             case NPC_State.Sleeping:
                 break;
             case NPC_State.Standing:
@@ -142,6 +158,14 @@ public class CharacterNavigation : MonoBehaviour
                 answer = false;
                 break;
             case NPC_State.Huh:
+                if (currentCharacterState == NPC_State.Huh ||
+                    currentCharacterState == NPC_State.Fixing ||
+                    currentCharacterState == NPC_State.Angry ||
+                    currentCharacterState == NPC_State.Working ||
+                    currentCharacterState == NPC_State.Jumping)
+                {
+                    answer = false;
+                }
                 break;
             case NPC_State.Jumping:
                 answer = false;
@@ -178,5 +202,12 @@ public class CharacterNavigation : MonoBehaviour
 
         
         yield return null;
+    }
+
+    public void DoneFixingDistraction()
+    {
+        ChangeState(CharacterNavigation.NPC_State.Walking);
+        currentDistraction = null;
+        GoToNextPlace(false);
     }
 }

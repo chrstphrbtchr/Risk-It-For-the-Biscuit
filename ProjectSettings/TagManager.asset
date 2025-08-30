@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food Zone
   - Anchor Point
+  - Distraction
   layers:
   - Default
   - TransparentFX

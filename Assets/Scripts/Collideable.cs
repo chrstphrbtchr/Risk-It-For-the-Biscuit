@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -47,26 +48,51 @@ public class Collideable : MonoBehaviour
                     if (dis==null) { Debug.LogWarning("NO SUCH DISTRACTABLE"); return; }
                     dis.BeginToDistract();
                 }
-
-                if(collision.gameObject.tag == "Character")
+                else if (collision.gameObject.tag == "Character")
                 {
                     // Do something else!
                 }
-
-                BreakCollideable();
+                else
+                {
+                    // Don't add more distractions!
+                    CreateNewDistraction();
+                }
+                // Break regardless
+                BreakCollideable(); 
             }
             
         }
     }
 
+    bool ShouldBreak()
+    {
+        return (rb.velocity.magnitude > velocityBeforeDestruction);
+    }
     void BreakCollideable()
     {
-        // Create a distraction orb or raycast or whatever we're doing HERE
-        Debug.Log(rb.velocity.magnitude);
-        if (rb.velocity.magnitude > velocityBeforeDestruction)
+        //Debug.Log(rb.velocity.magnitude);
+        if (ShouldBreak())
         {
             Instantiate(particles, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+        }
+    }
+
+    void CreateNewDistraction()
+    {
+        if (ShouldBreak())
+        {
+            GameObject g = new GameObject("Distraction");
+            g.transform.position = this.transform.position;
+            Distractable d = g.AddComponent<Distractable>();
+            d.oneTimeDistraction = true;
+            d.isCurrentlyDistracting = true;
+            d.distanceOfDistraction = this.rb.velocity.magnitude;
+            d.distanceOfDistraction = 9999; // TESTINMG DELETEM E
+            
+            //d.animationParameterForBakerOnFix = 0;
+            //d.animationParameterForCatOnFix = 0;
+            d.BeginToDistract();
         }
     }
 }

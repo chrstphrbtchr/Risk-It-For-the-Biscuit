@@ -12,6 +12,8 @@ public class ReturnZone : MonoBehaviour
     public TMP_Text weightGathered, acquiredText;
     public Image weightIcon;
     public GameObject acquiredSquare;
+    public float kgToWin;
+    public GameObject winScreen;
     // Start is called before the first frame update
 
 
@@ -25,6 +27,15 @@ public class ReturnZone : MonoBehaviour
             acquiredText.text = $"{MouseLaunch.haul.displayName} Gathered";
             MouseLaunch.haul.gameObject.SetActive(false);
             MouseLaunch.haul = null;
+            MouseLaunch.HasRock = true;
+
+            if (weightOfHauls >= kgToWin )
+            {
+                Time.timeScale = 0f;
+                winScreen.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
             StartCoroutine(flashWeight());
         }
     }

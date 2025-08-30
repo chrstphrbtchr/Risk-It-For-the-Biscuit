@@ -8,7 +8,7 @@ public class LaunchGauge : MonoBehaviour
     public Vector2 coverStartPos, coverEndPos;
     public float coverEndX;
     public MouseLaunch mouseLaunch;
-    public Image cover;
+    public Image cover, mask;
     public bool debugEndPos;
     public bool throwNotLaunch;
     // Start is called before the first frame update
@@ -16,7 +16,11 @@ public class LaunchGauge : MonoBehaviour
     {
         coverStartPos = cover.transform.position;
         coverEndPos.y = cover.transform .position.y;
-        coverEndPos.x = coverEndX;
+       
+        RectTransform rt = mask.GetComponent<RectTransform>();
+       Vector3[] v = new Vector3[4];
+       rt.GetWorldCorners (v);
+        coverEndPos.x = coverStartPos.x + ((v[3].x - v[0].x)/1) ;
     }
 
     // Update is called once per frame

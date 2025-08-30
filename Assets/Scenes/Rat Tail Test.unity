@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6943,6 +6943,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mouse Player System
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
+        type: 3}
+      propertyPath: initStrength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
+        type: 3}
+      propertyPath: springAbsMax
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
+        type: 3}
+      propertyPath: springAbsMin
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
+        type: 3}
+      propertyPath: strengthPerSecond
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

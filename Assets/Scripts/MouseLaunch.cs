@@ -14,8 +14,8 @@ public class MouseLaunch : MonoBehaviour
     public static bool HasRock = true;
     public static bool IsThrowing;
     float maxTime = 4, timer = 0;
-    public float minStrenght, maxStrength;
-    public float possibleMaxSpring;
+    public float minStrenght, maxStrength, initStrength, strengthPerSecond;
+    public float possibleMaxSpring, springAbsMax, springAbsMin;
     public static float massMuliplier = 1;
     public static Collideable haul;
     public Transform anchorPoint;
@@ -46,11 +46,11 @@ public class MouseLaunch : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //mousebody.constraints = RigidbodyConstraints.FreezeAll;
-                strength = 10;
+                strength = initStrength;
             }
             if (Input.GetMouseButton(0))
             {
-                strength += Time.deltaTime * 25;
+                strength += Time.deltaTime * strengthPerSecond;
             }
         }
         
@@ -146,8 +146,8 @@ public class MouseLaunch : MonoBehaviour
             timer -= (Time.deltaTime / massMuliplier);
             timer = Mathf.Clamp(timer, 0, maxTime);
             float nowish = timer / maxTime;
-            spring.maxDistance = Mathf.Lerp(0.2f, 55, nowish);
-            spring.minDistance = Mathf.Lerp(0f, 5, nowish);
+            spring.maxDistance = Mathf.Lerp(0.2f, springAbsMax, nowish);
+            spring.minDistance = Mathf.Lerp(0f, springAbsMin, nowish);
             spring.spring = Mathf.Lerp(possibleMaxSpring, 10, nowish);
             mousebody.angularDrag = Mathf.Lerp(10, 0.05f, nowish);
         }

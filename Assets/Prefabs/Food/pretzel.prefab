@@ -99,6 +99,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8529332057299202664}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6203664dbb1329246a88d37faf769db4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3549567711276570129}
   m_SourcePrefab: {fileID: 100100000, guid: 6203664dbb1329246a88d37faf769db4, type: 3}
 --- !u!1 &4717860976090059526 stripped
 GameObject:
@@ -135,7 +139,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4717860976090059526}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -171,4 +175,31 @@ MonoBehaviour:
   particles: {fileID: 0}
   isPickedUp: 0
   isThrown: 0
-  velocityBeforeDestruction: 0
+  velocityBeforeDestruction: 2.09
+--- !u!114 &3549567711276570129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717860976090059526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acde45ff98fff14c962a8d3e956b027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCurrentlyDistracting: 0
+  distractionFixLocation: {fileID: 0}
+  timeOfDistraction: 1.03
+  distanceOfDistraction: 0.77
+  distractabilityThreshold: 0.83
+  continuedDistraction: 0
+  currentlyBeingFixedBy: {fileID: 0}
+  animationParameterForBakerOnFix: 0
+  animationParameterForCatOnFix: 0
+  onDistract:
+    m_PersistentCalls:
+      m_Calls: []
+  onFix:
+    m_PersistentCalls:
+      m_Calls: []

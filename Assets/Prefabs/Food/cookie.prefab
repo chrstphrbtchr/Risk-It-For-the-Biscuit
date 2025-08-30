@@ -99,6 +99,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7904396866288882447}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84d6b0ec8e0f5e143b203da27a899285,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2600111917338580370}
   m_SourcePrefab: {fileID: 100100000, guid: 84d6b0ec8e0f5e143b203da27a899285, type: 3}
 --- !u!1 &4398034133605552840 stripped
 GameObject:
@@ -114,7 +118,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4398034133605552840}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -150,7 +154,7 @@ MonoBehaviour:
   particles: {fileID: 0}
   isPickedUp: 0
   isThrown: 0
-  velocityBeforeDestruction: 0
+  velocityBeforeDestruction: 2.01
 --- !u!65 &7904396866288882447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -172,3 +176,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.219744, y: 0.049769998, z: 0.19030389}
   m_Center: {x: 0, y: 0.024884999, z: 0}
+--- !u!114 &-2600111917338580370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398034133605552840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acde45ff98fff14c962a8d3e956b027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCurrentlyDistracting: 0
+  distractionFixLocation: {fileID: 0}
+  timeOfDistraction: 7.32
+  distanceOfDistraction: 7.53
+  distractabilityThreshold: 1.91
+  continuedDistraction: 0
+  currentlyBeingFixedBy: {fileID: 0}
+  animationParameterForBakerOnFix: 0
+  animationParameterForCatOnFix: 0
+  onDistract:
+    m_PersistentCalls:
+      m_Calls: []
+  onFix:
+    m_PersistentCalls:
+      m_Calls: []

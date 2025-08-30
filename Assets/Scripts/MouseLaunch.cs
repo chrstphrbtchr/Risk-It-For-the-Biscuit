@@ -13,10 +13,10 @@ public class MouseLaunch : MonoBehaviour
     public static bool IsLaunching;
     public static bool HasRock = true;
     public static bool IsThrowing;
-    float maxTime = 4, timer = 0;
+    float maxTime = 6, timer = 0;
     public float minStrenght, maxStrength, initStrength, strengthPerSecond;
-    public float possibleMaxSpring, springAbsMax, springAbsMin;
-    public static float massMuliplier = 1;
+    public float possibleMaxSpring, possibleMinSpring, springAbsMax, springAbsMin;
+    public static float massMuliplier = 1.25f;
     public static Collideable haul;
     public Transform anchorPoint;
     public float throwForce = 0, throwMult = 5000;
@@ -148,7 +148,7 @@ public class MouseLaunch : MonoBehaviour
             float nowish = timer / maxTime;
             spring.maxDistance = Mathf.Lerp(0.2f, springAbsMax, nowish);
             spring.minDistance = Mathf.Lerp(0f, springAbsMin, nowish);
-            spring.spring = Mathf.Lerp(possibleMaxSpring, 10, nowish);
+            spring.spring = Mathf.Lerp(possibleMaxSpring, possibleMinSpring, nowish);
             mousebody.angularDrag = Mathf.Lerp(10, 0.05f, nowish);
         }
         else

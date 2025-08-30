@@ -99,6 +99,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3008702389076413638}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81b13358ac5c8d446a13056fb0ab8c85,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4611918961416223167}
   m_SourcePrefab: {fileID: 100100000, guid: 81b13358ac5c8d446a13056fb0ab8c85, type: 3}
 --- !u!1 &7151714572664814365 stripped
 GameObject:
@@ -172,3 +176,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.24505854, y: 0.08889225, z: 0.28296924}
   m_Center: {x: 0, y: 0.044446126, z: 0}
+--- !u!114 &-4611918961416223167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151714572664814365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acde45ff98fff14c962a8d3e956b027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCurrentlyDistracting: 0
+  distractionFixLocation: {fileID: 0}
+  timeOfDistraction: 3.98
+  distanceOfDistraction: 1.24
+  distractabilityThreshold: 3.49
+  continuedDistraction: 0
+  currentlyBeingFixedBy: {fileID: 0}
+  animationParameterForBakerOnFix: 0
+  animationParameterForCatOnFix: 0
+  onDistract:
+    m_PersistentCalls:
+      m_Calls: []
+  onFix:
+    m_PersistentCalls:
+      m_Calls: []

@@ -99,6 +99,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8217296643600800970}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b21e4f3421eb6349afd4402b8197574,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7460446199013884220}
   m_SourcePrefab: {fileID: 100100000, guid: 3b21e4f3421eb6349afd4402b8197574, type: 3}
 --- !u!1 &111811403695401377 stripped
 GameObject:
@@ -114,7 +118,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111811403695401377}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 1.87
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -172,3 +176,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.16, y: 0.088749714, z: 0.13}
   m_Center: {x: -0.00000002235174, y: 0.04491869, z: 0}
+--- !u!114 &7460446199013884220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111811403695401377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acde45ff98fff14c962a8d3e956b027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCurrentlyDistracting: 0
+  distractionFixLocation: {fileID: 0}
+  timeOfDistraction: 27.44
+  distanceOfDistraction: 5.73
+  distractabilityThreshold: 17.73
+  continuedDistraction: 0
+  currentlyBeingFixedBy: {fileID: 0}
+  animationParameterForBakerOnFix: 0
+  animationParameterForCatOnFix: 0
+  onDistract:
+    m_PersistentCalls:
+      m_Calls: []
+  onFix:
+    m_PersistentCalls:
+      m_Calls: []

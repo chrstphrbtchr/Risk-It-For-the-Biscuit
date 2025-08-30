@@ -181,7 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   joint: {fileID: 0}
-  particles: {fileID: 0}
+  particles: {fileID: 6744336497091133885, guid: 2a9d91faa601d054390091bcfd032f12,
+    type: 3}
   isPickedUp: 0
   isThrown: 0
   velocityBeforeDestruction: 2.09

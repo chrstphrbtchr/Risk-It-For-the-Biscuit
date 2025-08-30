@@ -5224,7 +5224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouse: {fileID: 1805745635}
   margin: 0.75
-  maxDist: 5
+  maxDist: 20
+  failscreen: {fileID: 1185061032}
 --- !u!4 &433717299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1269106831749761315, guid: 58c1b8af305f7e04d9fccb00f2663b4f,
@@ -22014,7 +22015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouse: {fileID: 1805745635}
   margin: 0.5
-  maxDist: 5
+  maxDist: 20
+  failscreen: {fileID: 1185061032}
 --- !u!4 &1839467905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7581267426333259394, guid: b203c69f429a5be45bb6f45556a1ae26,

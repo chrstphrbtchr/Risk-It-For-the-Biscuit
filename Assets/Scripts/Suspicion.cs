@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Suspicion : MonoBehaviour
 {
-    static float maximumSus = 50;
+    static float maximumSus = 256;
     static float currentSus;
     public Transform mouse;
     public float margin;    //1 is perfect, 0 is bad, so it should be something like 0.75f
     public float maxDist = 5;
+    public GameObject failscreen;
 
     // Update is called once per frame
     void Update()
@@ -27,9 +28,9 @@ public class Suspicion : MonoBehaviour
         if (dotProd >= margin)
         {
             float dist = Vector3.Distance(transform.position, mouse.position);
-            if (dist < 5)
+            if (dist < maxDist)
             {
-                currentSus += (5 - dist) * Time.deltaTime;
+                currentSus += (maxDist - dist) * Time.deltaTime;
             }
             
         }
@@ -37,6 +38,7 @@ public class Suspicion : MonoBehaviour
         if(currentSus >= maximumSus)
         {
             Debug.Log("GAME OVER MAN");
+            failscreen.SetActive(true);
         }
     }
 }

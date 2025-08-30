@@ -144,7 +144,7 @@ public class CharacterNavigation : MonoBehaviour
     {
         int mod = 0;
         
-        anim.SetFloat("RB_VEL", myAgent.velocity.magnitude);
+        //anim.SetFloat("RB_VEL", myAgent.velocity.magnitude);
         if (currentDistraction != null)
         {
             if (currentCharacterState == NPC_State.Fixing)
@@ -156,7 +156,8 @@ public class CharacterNavigation : MonoBehaviour
                 else
                 {
                     mod = currentDistraction.animationParameterForBakerOnFix;
-                } 
+                }
+                anim.SetFloat("RB_VEL", 0);
             }
             anim.SetInteger("ANIM_MOD", mod);
 
@@ -178,6 +179,7 @@ public class CharacterNavigation : MonoBehaviour
                 case NPC_State.Fixing:
                     mod = 3; break;
                 case NPC_State.Walking:
+                    anim.SetFloat("RB_VEL", 2);
                     mod = 1; break;
                 case NPC_State.Huh:
                     mod = 2; break;
@@ -201,7 +203,8 @@ public class CharacterNavigation : MonoBehaviour
         {
             anim.SetBool("JUMPING", false);
         }
-        
+        Debug.LogFormat("<color=#15FF01>{0} should be</color> Mod:{1}, Vel:{2}, Time:{3}",
+            this.name, mod, myAgent.velocity.magnitude, tasks[taskIndex].taskTime);
     }
 
     bool ShouldOverrideState(NPC_State newState)

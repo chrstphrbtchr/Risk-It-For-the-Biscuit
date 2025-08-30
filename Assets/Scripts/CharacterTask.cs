@@ -22,7 +22,7 @@ public class CharacterTask : MonoBehaviour
 
     public void BeginCharacterTask(CharacterNavigation theCharacter)
     {
-        if (currentCharacter == null)
+        if (theCharacter != null)
         {
             currentCharacter = theCharacter;
         }

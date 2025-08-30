@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LaunchGauge : MonoBehaviour
 {
     public Vector2 coverStartPos, coverEndPos;
+    public float coverEndX;
     public MouseLaunch mouseLaunch;
     public Image cover;
     public bool debugEndPos;
@@ -14,6 +15,8 @@ public class LaunchGauge : MonoBehaviour
     void Start()
     {
         coverStartPos = cover.transform.position;
+        coverEndPos.y = cover.transform .position.y;
+        coverEndPos.x = coverEndX;
     }
 
     // Update is called once per frame
@@ -22,6 +25,10 @@ public class LaunchGauge : MonoBehaviour
         float nowStr = throwNotLaunch?mouseLaunch.throwForce / mouseLaunch.maxThrowForce : mouseLaunch.strength / mouseLaunch.maxStrength;
         
         cover.transform.position = Vector2.Lerp(coverStartPos, coverEndPos, nowStr);
-        if (debugEndPos) { cover.transform.position = coverEndPos; }
+        if (debugEndPos)
+        {
+            coverEndPos.x = coverEndX;
+            cover.transform.position = coverEndPos; 
+        }
     }
 }

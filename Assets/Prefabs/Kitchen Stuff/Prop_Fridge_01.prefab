@@ -399,7 +399,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2927119136818431070}
+      - m_Target: {fileID: 4703748948916019833}
         m_TargetAssemblyTypeName: DoorsLights, Assembly-CSharp
         m_MethodName: openDoor
         m_Mode: 1
@@ -426,7 +426,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2927119136818431070}
+      - m_Target: {fileID: 4703748948916019833}
         m_TargetAssemblyTypeName: DoorsLights, Assembly-CSharp
         m_MethodName: closeDoor
         m_Mode: 1

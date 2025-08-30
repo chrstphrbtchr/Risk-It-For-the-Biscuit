@@ -13,15 +13,18 @@ public class MouseLaunch : MonoBehaviour
     public static bool IsLaunching;
     public static bool HasRock = true;
     public static bool IsThrowing;
-    float maxTime = 6, timer = 0;
+   public float maxTime = 6, timer = 0;
     public float minStrenght, maxStrength, initStrength, strengthPerSecond;
     public float possibleMaxSpring, possibleMinSpring, springAbsMax, springAbsMin;
-    public static float massMuliplier = 1.25f;
+    public static float massMuliplier = 1f;
     public static Collideable haul;
     public Transform anchorPoint;
     public float throwForce = 0, throwMult = 5000;
     public float maxThrowForce = 1000;
     public GameObject rock;
+    public float maxInverseDistance;
+    public float initReelDelay;
+    float reelDelay;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,9 +67,10 @@ public class MouseLaunch : MonoBehaviour
             IsLaunching = true;
             
             strength = Mathf.Clamp(strength, minStrenght, maxStrength);
-            timer = maxTime;
+            timer = (strength/maxStrength) * maxTime;  //I'm fucking with this - Michael
             mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
             strength = 0;
+            reelDelay = initReelDelay;
             //mousebody.AddForceAtPosition(cam.forward *strength, mousebody.position, ForceMode.Impulse);
             //mousebody.constraints = RigidbodyConstraints.FreezeRotation;
             //Vector2 camcenter = new Vector2(Camera.main.scaledPixelWidth * 0.5f,Camera.main.scaledPixelHeight * 0.5f);
@@ -142,8 +146,15 @@ public class MouseLaunch : MonoBehaviour
     {
         if (timer > 0)
         {
-            massMuliplier = Mathf.Clamp(massMuliplier, 1, 25);
-            timer -= (Time.deltaTime / massMuliplier);
+            if (reelDelay > 0) { reelDelay -= Time.deltaTime; }
+            else 
+            {
+                float timeAndDistance = Mathf.Clamp((maxInverseDistance - Mathf.Abs(Vector3.Distance(this.transform.position, originalPosition)) * Time.deltaTime), Time.deltaTime, 1);
+                massMuliplier = Mathf.Clamp(massMuliplier, 1, 25);
+                timer -= timeAndDistance;
+            }
+
+            // timer -= (Time.deltaTime / massMuliplier);
             timer = Mathf.Clamp(timer, 0, maxTime);
             float nowish = timer / maxTime;
             spring.maxDistance = Mathf.Lerp(0.2f, springAbsMax, nowish);

@@ -18,7 +18,7 @@ public class Collideable : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
+    {   
         if (isPickedUp)
         {
             return;
@@ -37,6 +37,7 @@ public class Collideable : MonoBehaviour
             joint.minDistance = 0.25f;
             joint.maxDistance = 1.5f;
             rb.angularDrag = 5;
+            
         }
         else
         {

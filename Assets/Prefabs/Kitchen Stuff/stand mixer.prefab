@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4514054586249187469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2531317439039221742}
+  m_Layer: 0
+  m_Name: fix Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2531317439039221742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4514054586249187469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.41, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4626331314894967104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5169779071217432235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,7 +131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a340ed2389e5057429f54fe80c749608,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2531317439039221742}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a340ed2389e5057429f54fe80c749608,
         type: 3}
@@ -110,15 +145,17 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7116120268171502771}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a340ed2389e5057429f54fe80c749608,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1689595032196575330}
     - targetCorrespondingSourceObject: {fileID: -7247498200858194219, guid: a340ed2389e5057429f54fe80c749608,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1375164563617341449}
   m_SourcePrefab: {fileID: 100100000, guid: a340ed2389e5057429f54fe80c749608, type: 3}
+--- !u!4 &4626331314894967104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a340ed2389e5057429f54fe80c749608,
+    type: 3}
+  m_PrefabInstance: {fileID: 5169779071217432235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5440303808219761658 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a340ed2389e5057429f54fe80c749608,
@@ -137,6 +174,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1e812f704d44e4f86705a4f8f9f15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCurrentlyDistracting: 0
+  distractionFixLocation: {fileID: 2531317439039221742}
+  timeOfDistraction: 5
+  distanceOfDistraction: 3
+  distractabilityThreshold: 0
+  continuedDistraction: 1
+  currentlyBeingFixedBy: {fileID: 0}
+  animationParameterForBakerOnFix: 0
+  animationParameterForCatOnFix: 0
+  onDistract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7261233368789303567}
+        m_TargetAssemblyTypeName: StandMixer, Assembly-CSharp
+        m_MethodName: TurnOnMixer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onFix:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7261233368789303567}
+        m_TargetAssemblyTypeName: StandMixer, Assembly-CSharp
+        m_MethodName: TurnOffMixer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   bowl: {fileID: 6509680887187312578}
   doughHook: {fileID: 7604455838875020874}
   mixerOn: 0
@@ -164,25 +240,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.766707, y: 2.0191176, z: 1.3357052}
   m_Center: {x: -0.11362729, y: 3.1382654, z: -0.16784729}
---- !u!114 &1689595032196575330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5440303808219761658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acde45ff98fff14c962a8d3e956b027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCurrentlyDistracting: 0
-  distractionFixLocation: {fileID: 0}
-  timeOfDistraction: 0
-  distanceOfDistraction: 0
-  currentlyBeingFixedBy: {fileID: 0}
-  animationParameterForBakerOnFix: 0
-  animationParameterForCatOnFix: 0
 --- !u!1 &6509680887187312578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7067917022921033367, guid: a340ed2389e5057429f54fe80c749608,

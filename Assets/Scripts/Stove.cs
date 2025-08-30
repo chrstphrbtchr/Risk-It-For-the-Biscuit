@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stove : MonoBehaviour
+public class Stove : Distractable
 {
     public GameObject burnEffect;
     public Collider triggerCollider;
@@ -13,5 +13,18 @@ public class Stove : MonoBehaviour
        
         burnerOn = !burnerOn;
         burnEffect.SetActive(burnerOn);
+        Invoke("BeginToDistract", 1);
+    }
+
+    public void BurnerOff()
+    {
+        burnerOn = false;
+        burnEffect.SetActive(false);
+    }
+
+    public void BurnerOn()
+    {
+        burnerOn = true;
+        burnEffect.SetActive(true);
     }
 }

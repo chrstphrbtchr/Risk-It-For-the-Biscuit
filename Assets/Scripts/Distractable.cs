@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Distractable : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class Distractable : MonoBehaviour
     [Header("Animation Parameters for Characters")]
     public int animationParameterForBakerOnFix;
     public int animationParameterForCatOnFix;
+    [Tooltip("Run when distraction starts")]
+    public UnityEvent onDistract;
+    [Tooltip("Run when done fixing")]
+    public UnityEvent onFix;
     
 
     private void Update()
@@ -30,7 +35,7 @@ public class Distractable : MonoBehaviour
         }
     }
 
-    void DistractNearestCharacter()
+ public void DistractNearestCharacter()
     {
         CharacterNavigation cur = null;
         // Continue launching out distraction raycasts until someone picks up
@@ -58,6 +63,7 @@ public class Distractable : MonoBehaviour
     {
         DistractNearestCharacter();
         StartCoroutine("Distract");
+        onDistract.Invoke();
     }
 
     public void BeginFixDistraction()
@@ -85,6 +91,7 @@ public class Distractable : MonoBehaviour
         yield return new WaitForSeconds(timeOfDistraction);
         currentlyBeingFixedBy.ChangeState(CharacterNavigation.NPC_State.Standing);
         currentlyBeingFixedBy.GoToNextPlace(false);
+        onFix.Invoke();
         yield return null;
     }
 

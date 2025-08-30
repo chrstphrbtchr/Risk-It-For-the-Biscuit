@@ -251,6 +251,7 @@ MonoBehaviour:
   rotateOnOpen: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
   openingTime: 0.66
   isOpen: 0
+  testing: 0
 --- !u!1 &3025386925552397822
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +264,7 @@ GameObject:
   - component: {fileID: 7254102640882870301}
   - component: {fileID: 3112285444274230496}
   - component: {fileID: 69841933654977500}
+  - component: {fileID: 3794421108557888592}
   m_Layer: 0
   m_Name: Prop_Fridge_01
   m_TagString: Untagged
@@ -287,6 +289,7 @@ Transform:
   - {fileID: 778687199009502639}
   - {fileID: 1464257000601154099}
   - {fileID: 3833659173947229322}
+  - {fileID: 5099449090473896491}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7254102640882870301
@@ -360,6 +363,112 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6098872, y: 2.3331351, z: 0.8816388}
   m_Center: {x: 0, y: 1.1451898, z: 0.023258686}
+--- !u!114 &3794421108557888592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025386925552397822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acde45ff98fff14c962a8d3e956b027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCurrentlyDistracting: 0
+  distractionFixLocation: {fileID: 5099449090473896491}
+  timeOfDistraction: 2.19
+  distanceOfDistraction: 4.57
+  distractabilityThreshold: 0
+  continuedDistraction: 0
+  currentlyBeingFixedBy: {fileID: 0}
+  animationParameterForBakerOnFix: 0
+  animationParameterForCatOnFix: 0
+  onDistract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5613905822843666907}
+        m_TargetAssemblyTypeName: DoorsLights, Assembly-CSharp
+        m_MethodName: openDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2927119136818431070}
+        m_TargetAssemblyTypeName: DoorsLights, Assembly-CSharp
+        m_MethodName: openDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onFix:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5613905822843666907}
+        m_TargetAssemblyTypeName: DoorsLights, Assembly-CSharp
+        m_MethodName: closeDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2927119136818431070}
+        m_TargetAssemblyTypeName: DoorsLights, Assembly-CSharp
+        m_MethodName: closeDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &4742651204521218849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5099449090473896491}
+  m_Layer: 0
+  m_Name: fix point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5099449090473896491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742651204521218849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.149}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4607969906149273633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6677321869135188603
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,3 +720,4 @@ MonoBehaviour:
   rotateOnOpen: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
   openingTime: 0.66
   isOpen: 0
+  testing: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandMixer : MonoBehaviour
+public class StandMixer : Distractable
 {
     public GameObject bowl, doughHook;
     public bool mixerOn;
@@ -19,6 +19,10 @@ public class StandMixer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (continuedDistraction && isCurrentlyDistracting && currentlyBeingFixedBy == null)
+        {
+            DistractNearestCharacter();
+        }
         if (mixerOn)
         {
              currentMixSpeed = Mathf.Clamp(currentMixSpeed + mixSpeed, 0, mixMaxSpeed);

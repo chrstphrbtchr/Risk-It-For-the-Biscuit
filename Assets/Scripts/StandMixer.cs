@@ -17,12 +17,8 @@ public class StandMixer : Distractable
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (continuedDistraction && isCurrentlyDistracting && currentlyBeingFixedBy == null)
-        {
-            DistractNearestCharacter();
-        }
         if (mixerOn)
         {
              currentMixSpeed = Mathf.Clamp(currentMixSpeed + mixSpeed, 0, mixMaxSpeed);
@@ -37,15 +33,14 @@ public class StandMixer : Distractable
             bowl.transform.position = bowlOrigin;
         }
 
-
         doughHook.transform.Rotate(0, 0, currentMixSpeed);
     }
-
+/*
     private void OnCollisionEnter(Collision collision)
     {
         ToggleMixer();
     }
-
+*/
 
 
 

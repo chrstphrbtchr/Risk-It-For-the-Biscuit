@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Intro Scren.unity
+    guid: 1637a8480303ec84780d2d56c2e54d5e
+  - enabled: 1
     path: Assets/Scenes/Rat Tail Test.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Kitchen.unity
+    guid: e3d3f3bc00353f64ebb62aa5b0525a35
   m_configObjects: {}

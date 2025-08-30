@@ -59,13 +59,23 @@ public class CharacterNavigation : MonoBehaviour
 
     void CharacterStateMachine()
     {
+        UpdateCharacterAnimationProperties();
         switch (currentCharacterState)
         {
             case NPC_State.Angry:   // UNNECESSARY?!
+                if (!isCat)
+                {
+                    anim.SetInteger("ANIM_MOD", 4);
+                    anim.SetBool("JUMPING", false);
+                }
                 break;
             case NPC_State.Fixing:
+                anim.SetInteger("ANIM_MOD", 3);
+                anim.SetBool("JUMPING", false);
                 break;
             case NPC_State.Huh:
+                anim.SetInteger("ANIM_MOD", 2);
+                anim.SetBool("JUMPING", false);
                 // STANDING BUT LEADS INTO INVESTIGATING INSTEAD OF WORKING / SLEEPING
                 myAgent.isStopped = true;
                 if(currentDistraction != null)
@@ -81,6 +91,8 @@ public class CharacterNavigation : MonoBehaviour
                 myAgent.isStopped = false;
                 break;
             case NPC_State.Investigating:
+                anim.SetInteger("ANIM_MOD", 1);
+                anim.SetBool("JUMPING", false);
                 if (myAgent.remainingDistance < maxDistanceFromPoint)
                 {
                     // ARRIVED AT DISTRACTION
@@ -95,8 +107,13 @@ public class CharacterNavigation : MonoBehaviour
                 }
                 break;
             case NPC_State.Sleeping:
+                // CAT ONLY
+                anim.SetInteger("ANIM_MOD", 5);
+                anim.SetBool("JUMPING", false);
                 break;
             case NPC_State.Standing:
+                anim.SetInteger("ANIM_MOD", 0);
+                anim.SetBool("JUMPING", false);
                 if (myAgent.remainingDistance < myAgent.stoppingDistance)
                 {
                     //Vector3 taskpos = tasks[taskIndex].transform.forward;
@@ -111,6 +128,8 @@ public class CharacterNavigation : MonoBehaviour
                 }
                 break;
             case NPC_State.Walking:
+                anim.SetInteger("ANIM_MOD", 1);
+                anim.SetBool("JUMPING", false);
                 if (myAgent.remainingDistance < maxDistanceFromPoint)
                 {
                     ChangeState(NPC_State.Standing);
@@ -119,11 +138,15 @@ public class CharacterNavigation : MonoBehaviour
                 }
                 break;
             case NPC_State.Working:
+                anim.SetInteger("ANIM_MOD", 3);
+                anim.SetBool("JUMPING", false);
                 // myAgent.isStopped = true;
                 break;
             case NPC_State.Jumping:
+                anim.SetBool("JUMPING", true);
                 break;
             default:
+                anim.SetInteger("ANIM_MOD", 0);
                 break;
         }
     }
@@ -136,75 +159,23 @@ public class CharacterNavigation : MonoBehaviour
             return;
         }
         currentCharacterState = newState;
-        SwitchAnimations();
-        // Change animations here!
+
     }
 
-    void SwitchAnimations()
+    void UpdateCharacterAnimationProperties()
     {
-        int mod = 0;
-        
-        //anim.SetFloat("RB_VEL", myAgent.velocity.magnitude);
-        if (currentDistraction != null)
+        if(currentDistraction != null)
         {
-            if (currentCharacterState == NPC_State.Fixing)
-            {
-                if (isCat)
-                {
-                    mod = currentDistraction.animationParameterForCatOnFix;
-                }
-                else
-                {
-                    mod = currentDistraction.animationParameterForBakerOnFix;
-                }
-                anim.SetFloat("RB_VEL", 0);
-            }
-            anim.SetInteger("ANIM_MOD", mod);
-
-            if (currentDistraction.transform.position.y < -1.7f)
-            {
-                anim.SetBool("IS_ON_GROUND", true);
-            }
-            else
-            {
-                anim.SetBool("IS_ON_GROUND", false);
-            }  
+            // DISTRACTIONS
             anim.SetFloat("TIME_OF_TASK", currentDistraction.timeOfDistraction);
+            anim.SetBool("IS_ON_GROUND", (currentDistraction.transform.position.y < -1.7f));
         }
         else
         {
-            switch (currentCharacterState)
-            {
-                case NPC_State.Working:
-                case NPC_State.Fixing:
-                    mod = 3; break;
-                case NPC_State.Walking:
-                    anim.SetFloat("RB_VEL", 2);
-                    mod = 1; break;
-                case NPC_State.Huh:
-                    mod = 2; break;
-                case NPC_State.Sleeping:
-                    mod = 5; break;
-                case NPC_State.Angry:
-                    mod = 4; break;
-                default:
-                    mod = 0; break;
-            }
-            anim.SetInteger("ANIM_MOD", mod);
-            anim.SetBool("IS_ON_GROUND", true);
+            // TASKS
+            anim.SetBool("IS_ON_GROUND", (tasks[taskIndex].transform.position.y < -1.7f));
             anim.SetFloat("TIME_OF_TASK", tasks[taskIndex].taskTime);
         }
-
-        if (isCat && currentCharacterState == NPC_State.Jumping)
-        {
-            anim.SetBool("JUMPING", true);
-        }
-        else
-        {
-            anim.SetBool("JUMPING", false);
-        }
-        Debug.LogFormat("<color=#15FF01>{0} should be</color> Mod:{1}, Vel:{2}, Time:{3}",
-            this.name, mod, myAgent.velocity.magnitude, tasks[taskIndex].taskTime);
     }
 
     bool ShouldOverrideState(NPC_State newState)

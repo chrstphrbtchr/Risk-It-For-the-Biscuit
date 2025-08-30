@@ -6180,28 +6180,28 @@ PrefabInstance:
     - target: {fileID: 4689923332074138796, guid: d5e2d9c11a92490408181b9b254a75d1,
         type: 3}
       propertyPath: tasks.Array.size
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4689923332074138796, guid: d5e2d9c11a92490408181b9b254a75d1,
         type: 3}
       propertyPath: tasks.Array.data[0]
       value: 
-      objectReference: {fileID: 1822243753}
+      objectReference: {fileID: 118487123}
     - target: {fileID: 4689923332074138796, guid: d5e2d9c11a92490408181b9b254a75d1,
         type: 3}
       propertyPath: tasks.Array.data[1]
       value: 
-      objectReference: {fileID: 2144234080}
+      objectReference: {fileID: 922285875}
     - target: {fileID: 4689923332074138796, guid: d5e2d9c11a92490408181b9b254a75d1,
         type: 3}
       propertyPath: tasks.Array.data[2]
       value: 
-      objectReference: {fileID: 66811248}
+      objectReference: {fileID: 922285875}
     - target: {fileID: 4689923332074138796, guid: d5e2d9c11a92490408181b9b254a75d1,
         type: 3}
       propertyPath: tasks.Array.data[3]
       value: 
-      objectReference: {fileID: 118487123}
+      objectReference: {fileID: 922285875}
     - target: {fileID: 4689923332074138796, guid: d5e2d9c11a92490408181b9b254a75d1,
         type: 3}
       propertyPath: tasks.Array.data[4]
@@ -13439,7 +13439,7 @@ PrefabInstance:
     - target: {fileID: 7631487996086785531, guid: 7fa77a1b94979aa4aa23479849fb6656,
         type: 3}
       propertyPath: tasks.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7631487996086785531, guid: 7fa77a1b94979aa4aa23479849fb6656,
         type: 3}
@@ -13460,7 +13460,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tasks.Array.data[3]
       value: 
-      objectReference: {fileID: 118487123}
+      objectReference: {fileID: 922285875}
     - target: {fileID: 7631487996086785531, guid: 7fa77a1b94979aa4aa23479849fb6656,
         type: 3}
       propertyPath: tasks.Array.data[4]

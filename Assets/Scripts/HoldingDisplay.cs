@@ -8,7 +8,7 @@ public class HoldingDisplay : MonoBehaviour
 {
     public TMP_Text display;
     public Image bg;
-    public bool haulNullThisFrame, haulNullLastFrame;
+    public bool haulNullThisFrame, haulNullLastFrame, hadRockLastFrame;
     Color originalBG;
 
         private void Start()
@@ -19,12 +19,16 @@ public class HoldingDisplay : MonoBehaviour
     void Update()
     {
         haulNullThisFrame = MouseLaunch.haul == null;
-        if (haulNullThisFrame != haulNullLastFrame )
+        if (haulNullThisFrame != haulNullLastFrame || hadRockLastFrame != MouseLaunch.HasRock )
         {
             if (haulNullThisFrame)
             {
-                bg.color = Color.clear;
-                display.text = MouseLaunch.HasRock ? "HOLDING A ROCK" : "HOLDING NOTHING";
+                if (MouseLaunch.HasRock) { bg.color = originalBG; display.text = "HOLDING PEBBLE"; }
+                else
+                {
+                    bg.color = Color.clear;
+                    display.text = "HOLDING NOTHING";
+                }
             }
             else
             {
@@ -33,5 +37,6 @@ public class HoldingDisplay : MonoBehaviour
             }
         }
         haulNullLastFrame = haulNullThisFrame;
+        hadRockLastFrame = MouseLaunch.HasRock;
     }
 }

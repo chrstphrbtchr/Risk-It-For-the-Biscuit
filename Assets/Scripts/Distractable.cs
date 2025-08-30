@@ -66,7 +66,7 @@ public class Distractable : MonoBehaviour
     {
         DistractNearestCharacter();
         StartCoroutine("Distract");
-        onDistract.Invoke();
+        onDistract?.Invoke();
     }
 
     public void BeginFixDistraction()
@@ -94,13 +94,13 @@ public class Distractable : MonoBehaviour
         yield return new WaitForSeconds(timeOfDistraction);
         currentlyBeingFixedBy.ChangeState(CharacterNavigation.NPC_State.Standing);
         currentlyBeingFixedBy.GoToNextPlace(false);
-        onFix.Invoke();
+        onFix?.Invoke();
         yield return null;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Throwable")
         {
             // Gives the player enough time to bounce out.
             Invoke("BeginToDistract", 1);

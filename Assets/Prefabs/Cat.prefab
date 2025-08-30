@@ -1593,7 +1593,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -902729914
   m_Radius: 0.25
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 90
@@ -1621,5 +1621,6 @@ MonoBehaviour:
   tasks: []
   maxDistanceFromPoint: 0.1
   turningDistanceFromPoint: 1
-  isCat: 0
+  isCat: 1
   currentDistraction: {fileID: 0}
+  anim: {fileID: 2850728331823348645}

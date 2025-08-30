@@ -4993,7 +4993,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484637313}
   serializedVersion: 4
-  m_Mass: 6
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -10107,7 +10107,7 @@ Transform:
   m_GameObject: {fileID: 1074021267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.583, z: 0}
+  m_LocalPosition: {x: 0, y: 1.01, z: 0}
   m_LocalScale: {x: 8.08, y: 1, z: 7.63}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10130,7 +10130,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -18171,7 +18171,7 @@ PrefabInstance:
     - target: {fileID: 672460698708915580, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: -0.92
       objectReference: {fileID: 0}
     - target: {fileID: 1438155070595175659, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
@@ -18257,6 +18257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228246182645588670, guid: 9ba6945e77de98343ac5605be5d59f5d,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7252712757890450466, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
@@ -19951,7 +19956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coverStartPos: {x: 0, y: 0}
   coverEndPos: {x: 870, y: 50}
-  coverEndX: 413
+  coverEndX: 866.2
   mouseLaunch: {fileID: 26725139}
   cover: {fileID: 1825241761}
   debugEndPos: 0

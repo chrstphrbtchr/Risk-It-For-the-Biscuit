@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CharacterTask : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class CharacterTask : MonoBehaviour
     }
     IEnumerator WorkOnTask()
     {
+        if(currentCharacter == null)
+        {
+            Debug.LogWarning("<color=#248017>Who's working on this?!</color>");
+        }
         // TODO: Make sure Distractables can shut off WorkOnTask
         currentCharacter.ChangeState(CharacterNavigation.NPC_State.Working);
         while (Mathf.Abs(Vector3.Angle(currentCharacter.transform.forward.normalized, this.transform.forward.normalized)) > 0.1f)

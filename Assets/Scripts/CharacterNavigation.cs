@@ -17,6 +17,7 @@ public class CharacterNavigation : MonoBehaviour
     // public Distraction currentDistraction = null;
     public static CharacterNavigation[] DistractibleCharacters = new CharacterNavigation[2];
     int taskIndex = 0;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class CharacterNavigation : MonoBehaviour
         myAgent = GetComponent<NavMeshAgent>();
         GoToNextPlace(false);
         ChangeState(NPC_State.Walking);
+        
     }
 
     private void Update()
@@ -134,7 +136,72 @@ public class CharacterNavigation : MonoBehaviour
             return;
         }
         currentCharacterState = newState;
+        SwitchAnimations();
         // Change animations here!
+    }
+
+    void SwitchAnimations()
+    {
+        int mod = 0;
+        
+        anim.SetFloat("RB_VEL", myAgent.velocity.magnitude);
+        if (currentDistraction != null)
+        {
+            if (currentCharacterState == NPC_State.Fixing)
+            {
+                if (isCat)
+                {
+                    mod = currentDistraction.animationParameterForCatOnFix;
+                }
+                else
+                {
+                    mod = currentDistraction.animationParameterForBakerOnFix;
+                } 
+            }
+            anim.SetInteger("ANIM_MOD", mod);
+
+            if (currentDistraction.transform.position.y < -1.7f)
+            {
+                anim.SetBool("IS_ON_GROUND", true);
+            }
+            else
+            {
+                anim.SetBool("IS_ON_GROUND", false);
+            }  
+            anim.SetFloat("TIME_OF_TASK", currentDistraction.timeOfDistraction);
+        }
+        else
+        {
+            switch (currentCharacterState)
+            {
+                case NPC_State.Working:
+                case NPC_State.Fixing:
+                    mod = 3; break;
+                case NPC_State.Walking:
+                    mod = 1; break;
+                case NPC_State.Huh:
+                    mod = 2; break;
+                case NPC_State.Sleeping:
+                    mod = 5; break;
+                case NPC_State.Angry:
+                    mod = 4; break;
+                default:
+                    mod = 0; break;
+            }
+            anim.SetInteger("ANIM_MOD", mod);
+            anim.SetBool("IS_ON_GROUND", true);
+            anim.SetFloat("TIME_OF_TASK", tasks[taskIndex].taskTime);
+        }
+
+        if (isCat && currentCharacterState == NPC_State.Jumping)
+        {
+            anim.SetBool("JUMPING", true);
+        }
+        else
+        {
+            anim.SetBool("JUMPING", false);
+        }
+        
     }
 
     bool ShouldOverrideState(NPC_State newState)

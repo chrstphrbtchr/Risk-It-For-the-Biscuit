@@ -85,7 +85,7 @@ public class Collideable : MonoBehaviour
             GameObject g = new GameObject("Distraction");
             g.transform.position = this.transform.position;
             Distractable d = g.AddComponent<Distractable>();
-            d.oneTimeDistraction = true;
+            d.continuedDistraction = false;
             d.isCurrentlyDistracting = true;
             d.distanceOfDistraction = this.rb.velocity.magnitude;
             d.distanceOfDistraction = 9999; // TESTINMG DELETEM E

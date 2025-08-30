@@ -129,6 +129,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: stand mixer
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a340ed2389e5057429f54fe80c749608,
+        type: 3}
+      propertyPath: m_TagString
+      value: Distraction
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

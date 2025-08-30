@@ -40,10 +40,10 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _noise_scale: 84.97
-    - _normal_str: 2.49
-    - _smooth: 0.36
-    - _tile_freq: 8
+    - _noise_scale: 80.43
+    - _normal_str: 15.5
+    - _smooth: 0.48
+    - _tile_freq: 99.2
     m_Colors:
     - _Color1: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 0}
     - _Color2: {r: 0.5707547, g: 0.84563047, b: 1, a: 0}

@@ -9,9 +9,10 @@ public class MouseLook : MonoBehaviour
     float xRot = 0f;
     static Vector2 lockRotation = new Vector2(-160f, 30f);
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
         //Cursor.visible = false;
     }
 

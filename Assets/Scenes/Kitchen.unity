@@ -20469,22 +20469,22 @@ PrefabInstance:
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
       propertyPath: maxTime
-      value: 60
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
       propertyPath: maxStrength
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
       propertyPath: initStrength
-      value: 25
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
       propertyPath: springAbsMax
-      value: 2
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
@@ -20499,12 +20499,12 @@ PrefabInstance:
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
       propertyPath: possibleMaxSpring
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
       propertyPath: possibleMinSpring
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
@@ -20514,7 +20514,7 @@ PrefabInstance:
     - target: {fileID: 8586167215646281556, guid: 9ba6945e77de98343ac5605be5d59f5d,
         type: 3}
       propertyPath: maxInverseDistance
-      value: 0.15
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

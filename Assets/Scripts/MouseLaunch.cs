@@ -150,7 +150,9 @@ public class MouseLaunch : MonoBehaviour
             else 
             {
                 float timeAndDistance = Mathf.Clamp((maxInverseDistance - Mathf.Abs(Vector3.Distance(this.transform.position, originalPosition)) * Time.deltaTime), Time.deltaTime, 1);
-                massMuliplier = Mathf.Clamp(massMuliplier, 1, 25);
+              //  massMuliplier = Mathf.Clamp(massMuliplier, 1, 25);
+               if (haul != null) timeAndDistance = timeAndDistance/haul.rb.mass;
+                
                 timer -= timeAndDistance;
             }
 

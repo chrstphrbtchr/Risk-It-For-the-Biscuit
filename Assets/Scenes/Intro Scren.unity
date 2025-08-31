@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17858016, g: 0.22360551, b: 0.30556756, a: 1}
+  m_IndirectSpecularColor: {r: 0.17858033, g: 0.22360565, b: 0.3055681, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1298,6 +1298,73 @@ MonoBehaviour:
   cubetime: 0
   timer: 0
   distance: 0
+--- !u!1 &443534650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443534651}
+  - component: {fileID: 443534652}
+  m_Layer: 0
+  m_Name: Food Rain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &443534651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443534650}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &443534652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443534650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151f389f2df5a1e43aa7b7fef815a91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foods:
+  - {fileID: 919132149155446097, guid: aa34be7f031b829429c276852741b061, type: 3}
+  - {fileID: 919132149155446097, guid: 4b84e97a1ae981947859695c97469900, type: 3}
+  - {fileID: 919132149155446097, guid: a2066cc1dc173e94991773b7f532a514, type: 3}
+  - {fileID: 919132149155446097, guid: 01e4720402bf65c46b5a0a901f1cf401, type: 3}
+  - {fileID: 919132149155446097, guid: 4a35b1ff32ed0784d8341a5c6070ef86, type: 3}
+  - {fileID: 919132149155446097, guid: d2a22e94434cc4e48adb81d05a4bf660, type: 3}
+  - {fileID: 919132149155446097, guid: 815bc5b835473ba468f35b32d247a527, type: 3}
+  - {fileID: 919132149155446097, guid: 81b13358ac5c8d446a13056fb0ab8c85, type: 3}
+  - {fileID: 919132149155446097, guid: ce1d8fb57aab06f44b65abf7260c70fb, type: 3}
+  - {fileID: 919132149155446097, guid: efc32e0a740ab22478dbf0f1872599e0, type: 3}
+  - {fileID: 919132149155446097, guid: c2aee81e306c18a44a352438d74335b6, type: 3}
+  - {fileID: 919132149155446097, guid: 357a81279f4190a4ebd285178747d242, type: 3}
+  - {fileID: 919132149155446097, guid: 84d6b0ec8e0f5e143b203da27a899285, type: 3}
+  - {fileID: 919132149155446097, guid: d96032fc1f9528f4f8e2d57e9593973f, type: 3}
+  - {fileID: 919132149155446097, guid: 5796fd8e2c510b0479d7b7b8c38eac18, type: 3}
+  - {fileID: 919132149155446097, guid: 8347048ee019bb44f9834496579e0a70, type: 3}
+  - {fileID: 919132149155446097, guid: 7207b8b91681338449eec7e1795bc8f1, type: 3}
+  - {fileID: 919132149155446097, guid: 00ba1a5cd3c96684999aa3c5682e3f8c, type: 3}
+  - {fileID: 919132149155446097, guid: 06254f9f012e5434c939ee9d760c5660, type: 3}
+  - {fileID: 919132149155446097, guid: dff03d17d8a06bf448fce42e6033597e, type: 3}
+  - {fileID: 919132149155446097, guid: dd59fe667d5800349a7aac58d5699f06, type: 3}
+  - {fileID: 919132149155446097, guid: 63f987375e5738d4c984739c1ab7f3cb, type: 3}
 --- !u!1 &448671896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,7 +2586,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'GAME BY CHRIS BUTCHER and MICHAEL BARTON.
+  m_text: 'A JAM GAME BY
+
+    MICHAEL BARTON &
+
+    CHRISTOPHER BUTCHER.
 
 
 '
@@ -2550,7 +2621,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 112.45
+  m_fontSize: 74.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3090,8 +3161,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You are a mouse, you need to steal 11 KG of food from a bakery to feed
-    your family. You will do this by bungee jumping from the vent in a bakery's kitchen
+  m_text: You are a mouse, you need to steal 16 KG of food from the bakery to feed
+    your family. You will do this by bungee jumping from the vent in a bakery's kitchen.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5345c1fcb10aac24fbd57eb7e774f5e5, type: 2}
   m_sharedMaterial: {fileID: 2497970700797401828, guid: 5345c1fcb10aac24fbd57eb7e774f5e5,
@@ -4900,7 +4971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1981059101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5117,3 +5188,4 @@ SceneRoots:
   - {fileID: 1225222844}
   - {fileID: 959937525}
   - {fileID: 523286892}
+  - {fileID: 443534651}

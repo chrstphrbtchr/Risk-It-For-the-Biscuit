@@ -219,6 +219,8 @@ public class CharacterNavigation : MonoBehaviour
 
     public IEnumerator GoToNextPlace(bool charInterrupted)
     {
+        ChangeState(NPC_State.Standing);
+        yield return new WaitForSeconds(1);
         if (charInterrupted)
         {
             myAgent.SetDestination(currentDistraction.distractionFixLocation.position);

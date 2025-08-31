@@ -15,6 +15,7 @@ public class Collideable : MonoBehaviour
     public string displayName = "food";
     public SoundEffectsHelper sfx;
     AudioSource source;
+    public static bool canMakeNoise;
 
     private void Start()
     {
@@ -30,8 +31,12 @@ public class Collideable : MonoBehaviour
             return;
         }
 
-        // PLAY SOUND.
-        source.PlayOneShot(sfx.sounds[(int)Random.Range(0, sfx.sounds.Length)]);
+        if (canMakeNoise)
+        {
+            // PLAY SOUND.
+            source.PlayOneShot(sfx.sounds[(int)Random.Range(0, sfx.sounds.Length)]);
+        }
+        
 
         if(collision.collider.gameObject.tag == "Player")
         {

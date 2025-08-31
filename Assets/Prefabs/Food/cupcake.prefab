@@ -165,8 +165,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3551632, y: 0.1786, z: 0.30758035}
-  m_Center: {x: 0.0000011920929, y: 0.0893, z: -0.00000047683716}
+  m_Size: {x: 0.34137776, y: 0.37450254, z: 0.30758035}
+  m_Center: {x: 0.0068939053, y: 0.18725127, z: -0.0000004768404}
 --- !u!114 &5124579384593542828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +187,7 @@ MonoBehaviour:
   isThrown: 0
   velocityBeforeDestruction: 0
   displayName: Cupcake
+  sfx: {fileID: 0}
 --- !u!114 &-5297520963541252848
 MonoBehaviour:
   m_ObjectHideFlags: 0

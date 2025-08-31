@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Suspicion : MonoBehaviour
 {
-   public static float maximumSus = 256;
+   public static float maximumSus = 200;
   public  static float currentSus;
     public Transform mouse;
     public float margin;    //1 is perfect, 0 is bad, so it should be something like 0.75f

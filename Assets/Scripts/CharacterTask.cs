@@ -40,11 +40,15 @@ public class CharacterTask : MonoBehaviour
         {
             currentCharacter.transform.rotation = Quaternion.RotateTowards(currentCharacter.transform.rotation, this.transform.rotation, 0.5f);
             //print(Mathf.Abs(Vector3.Angle(currentCharacter.transform.forward.normalized, this.transform.forward.normalized));
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(taskTime);
-        StartCoroutine(currentCharacter.GoToNextPlace(false));
+        if(currentCharacter != null)
+        {
+            StartCoroutine(currentCharacter.GoToNextPlace(false));
+        }
         currentCharacter = null;
+        currentlyBeingWorkedOn = false;
         yield return null;
     }
 }

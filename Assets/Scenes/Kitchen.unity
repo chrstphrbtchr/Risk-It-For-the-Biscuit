@@ -8969,7 +8969,7 @@ PrefabInstance:
     - target: {fileID: 2506484407604123323, guid: 62cdc4b9813d5ba4a9fce226cffd32a5,
         type: 3}
       propertyPath: taskTime
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3962313297734200571, guid: 62cdc4b9813d5ba4a9fce226cffd32a5,
         type: 3}
@@ -15981,7 +15981,7 @@ PrefabInstance:
     - target: {fileID: 2506484407604123323, guid: 62cdc4b9813d5ba4a9fce226cffd32a5,
         type: 3}
       propertyPath: taskTime
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3962313297734200571, guid: 62cdc4b9813d5ba4a9fce226cffd32a5,
         type: 3}
@@ -22819,7 +22819,7 @@ PrefabInstance:
     - target: {fileID: 2506484407604123323, guid: 62cdc4b9813d5ba4a9fce226cffd32a5,
         type: 3}
       propertyPath: taskTime
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3962313297734200571, guid: 62cdc4b9813d5ba4a9fce226cffd32a5,
         type: 3}
@@ -23467,7 +23467,7 @@ PrefabInstance:
     - target: {fileID: 2506484407604123323, guid: 62cdc4b9813d5ba4a9fce226cffd32a5,
         type: 3}
       propertyPath: taskTime
-      value: 40
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3962313297734200571, guid: 62cdc4b9813d5ba4a9fce226cffd32a5,
         type: 3}

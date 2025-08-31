@@ -77,6 +77,10 @@ public class Distractable : MonoBehaviour
     IEnumerator Distract()
     {
         // ANYTHING THAT HAPPENS GOES HERE
+        if(currentlyBeingFixedBy != null)
+        {
+            currentlyBeingFixedBy.ChangeState(CharacterNavigation.NPC_State.Huh);
+        }
         yield return null;
     }
 

@@ -25,9 +25,12 @@ public class MouseLaunch : MonoBehaviour
     public float maxInverseDistance;
     public float initReelDelay;
     float reelDelay;
+    AudioSource source;
+    public AudioClip[] clips;
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         originalPosition = transform.position;
         mousebody = GetComponent<Rigidbody>();   
         spring = GetComponent<SpringJoint>();
@@ -71,6 +74,8 @@ public class MouseLaunch : MonoBehaviour
             mousebody.AddForce(cam.forward * strength, ForceMode.Impulse);
             strength = 0;
             reelDelay = initReelDelay;
+            source.PlayOneShot(clips[(int)Random.Range(0, clips.Length)]);
+            
             //mousebody.AddForceAtPosition(cam.forward *strength, mousebody.position, ForceMode.Impulse);
             //mousebody.constraints = RigidbodyConstraints.FreezeRotation;
             //Vector2 camcenter = new Vector2(Camera.main.scaledPixelWidth * 0.5f,Camera.main.scaledPixelHeight * 0.5f);

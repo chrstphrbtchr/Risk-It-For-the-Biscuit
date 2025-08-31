@@ -80,6 +80,7 @@ public class Distractable : MonoBehaviour
         if(currentlyBeingFixedBy != null)
         {
             currentlyBeingFixedBy.ChangeState(CharacterNavigation.NPC_State.Huh);
+            Suspicion.currentSus += 1;
         }
         yield return null;
     }

@@ -95,7 +95,7 @@ public class Collideable : MonoBehaviour
         Distractable d = g.AddComponent<Distractable>();
         d.continuedDistraction = false;
         d.isCurrentlyDistracting = true;
-        d.distanceOfDistraction = this.rb.velocity.magnitude * (ShouldBreak() ? 100 : 1);
+        d.distanceOfDistraction = 9999;
         d.timeOfDistraction = 3;
         //d.distanceOfDistraction = 9999; // TESTINMG DELETEM E
 

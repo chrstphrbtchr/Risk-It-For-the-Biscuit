@@ -45,8 +45,10 @@ public class Distractable : MonoBehaviour
         {
             CharacterNavigation c = CharacterNavigation.DistractibleCharacters[i];
             Vector3 v = (c.transform.position - this.transform.position);
-            RaycastHit hit;
-            if (Physics.Raycast(this.transform.position, v.normalized, out hit, distanceOfDistraction))
+            //RaycastHit hit;
+            //Debug.DrawRay(transform.position, v.normalized, Color.red, 5, true);
+            //if (Physics.Raycast(this.transform.position, v.normalized, out hit, distanceOfDistraction))
+            if(distanceOfDistraction <= v.magnitude)
             {
                 if (cur == null)
                 {
@@ -57,6 +59,7 @@ public class Distractable : MonoBehaviour
                     cur = c;
                 }
             }
+            
         }
         if (cur != null)
         {

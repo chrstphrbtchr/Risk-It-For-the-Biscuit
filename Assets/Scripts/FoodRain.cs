@@ -11,12 +11,6 @@ public class FoodRain : MonoBehaviour
         FoodNotBombs();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void FoodNotBombs()
     {
         GameObject g = Instantiate(foods[Random.Range(0, foods.Length)]);

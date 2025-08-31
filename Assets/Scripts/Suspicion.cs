@@ -11,6 +11,10 @@ public class Suspicion : MonoBehaviour
     public float maxDist = 5;
     public GameObject failscreen;
 
+    private void Start()
+    {
+        currentSus = 0;
+    }
     // Update is called once per frame
     void Update()
     {

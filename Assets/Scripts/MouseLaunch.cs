@@ -34,6 +34,7 @@ public class MouseLaunch : MonoBehaviour
         originalPosition = transform.position;
         mousebody = GetComponent<Rigidbody>();   
         spring = GetComponent<SpringJoint>();
+        IsLaunching = false;
     }
 
     // Update is called once per frame

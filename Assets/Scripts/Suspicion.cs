@@ -11,6 +11,10 @@ public class Suspicion : MonoBehaviour
     public float maxDist = 5;
     public GameObject failscreen;
 
+    private void Awake()
+    {
+        currentSus = 0;
+    }
     private void Start()
     {
         currentSus = 0;

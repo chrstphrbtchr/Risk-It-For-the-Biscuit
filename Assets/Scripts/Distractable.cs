@@ -25,6 +25,8 @@ public class Distractable : MonoBehaviour
     public UnityEvent onDistract;
     [Tooltip("Run when done fixing")]
     public UnityEvent onFix;
+
+
     
 
     private void Update()
@@ -105,7 +107,7 @@ public class Distractable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Throwable")
+        if(collision.gameObject.tag == "Player" || (collision.gameObject.tag == "Throwable" && this.gameObject.tag != "Throwable"))
         {
             // Gives the player enough time to bounce out.
             Invoke("BeginToDistract", 1);

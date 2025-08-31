@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1494692282338160331}
   - component: {fileID: 8398296613048213689}
   - component: {fileID: 3769665833136067070}
+  - component: {fileID: 6621254319736154950}
   m_Layer: 0
   m_Name: Prop_Oven_01
   m_TagString: Distraction
@@ -195,6 +196,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!65 &6621254319736154950
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105093472040163627}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0092353, y: 0.8550654, z: 0.61417687}
+  m_Center: {x: 0.008001374, y: 0.42766604, z: 0.004516975}
 --- !u!1 &7093819715117284045
 GameObject:
   m_ObjectHideFlags: 0

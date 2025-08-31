@@ -11,6 +11,7 @@ public class LaunchGauge : MonoBehaviour
     public Image cover, mask;
     public bool debugEndPos;
     public bool throwNotLaunch;
+    public bool suspicion;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class LaunchGauge : MonoBehaviour
     void Update()
     {
         float nowStr = throwNotLaunch?mouseLaunch.throwForce / mouseLaunch.maxThrowForce : mouseLaunch.strength / mouseLaunch.maxStrength;
+        if (suspicion) { nowStr = Suspicion.currentSus / Suspicion.maximumSus; }
         
         cover.transform.position = Vector2.Lerp(coverStartPos, coverEndPos, nowStr);
         if (debugEndPos)

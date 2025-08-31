@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Suspicion : MonoBehaviour
 {
-    static float maximumSus = 256;
-    static float currentSus;
+   public static float maximumSus = 256;
+  public  static float currentSus;
     public Transform mouse;
     public float margin;    //1 is perfect, 0 is bad, so it should be something like 0.75f
     public float maxDist = 5;

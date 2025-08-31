@@ -9572,7 +9572,7 @@ MonoBehaviour:
   acquiredText: {fileID: 1070752643}
   weightIcon: {fileID: 1023147750}
   acquiredSquare: {fileID: 419238713}
-  kgToWin: 11
+  kgToWin: 16
   winScreen: {fileID: 428314649}
 --- !u!1 &858495952 stripped
 GameObject:

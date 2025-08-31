@@ -377,9 +377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCurrentlyDistracting: 0
   distractionFixLocation: {fileID: 5099449090473896491}
-  timeOfDistraction: 2.19
-  distanceOfDistraction: 4.57
-  distractabilityThreshold: 0
+  timeOfDistraction: 4.49
+  distanceOfDistraction: 9.7
+  distractabilityThreshold: 0.45
   continuedDistraction: 0
   currentlyBeingFixedBy: {fileID: 0}
   animationParameterForBakerOnFix: 0

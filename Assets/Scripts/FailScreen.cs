@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class FailScreen : MonoBehaviour
 {
+    public AudioClip losingSound;
+    public AudioSource source;
     private void OnEnable()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
-
+        source.PlayOneShot(losingSound);
     }
 
     public void TryAgain()

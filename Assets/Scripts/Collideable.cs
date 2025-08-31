@@ -13,11 +13,14 @@ public class Collideable : MonoBehaviour
     public bool isPickedUp = false, isThrown = false;
     public float velocityBeforeDestruction;
     public string displayName = "food";
+    public SoundEffectsHelper sfx;
+    AudioSource source;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         GetComponent<NavMeshObstacle>().carving = true;
+        source = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,6 +29,9 @@ public class Collideable : MonoBehaviour
         {
             return;
         }
+
+        // PLAY SOUND.
+        source.PlayOneShot(sfx.sounds[(int)Random.Range(0, sfx.sounds.Length)]);
 
         if(collision.collider.gameObject.tag == "Player")
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 
 public class ReturnZone : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class ReturnZone : MonoBehaviour
     public GameObject acquiredSquare;
     public float kgToWin;
     public GameObject winScreen;
+    public AudioSource source;
+    public AudioClip[] clips;
     // Start is called before the first frame update
 
 
@@ -28,6 +31,8 @@ public class ReturnZone : MonoBehaviour
             MouseLaunch.haul.gameObject.SetActive(false);
             MouseLaunch.haul = null;
             MouseLaunch.HasRock = true;
+
+            source.PlayOneShot(clips[(int)Random.Range(0, clips.Length)]);
 
             if (weightOfHauls >= kgToWin )
             {

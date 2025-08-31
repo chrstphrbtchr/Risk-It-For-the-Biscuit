@@ -203,6 +203,7 @@ public class CharacterNavigation : MonoBehaviour
                     currentCharacterState == NPC_State.Fixing ||
                     currentCharacterState == NPC_State.Angry ||
                     currentCharacterState == NPC_State.Working ||
+                    currentCharacterState == NPC_State.Walking ||
                     currentCharacterState == NPC_State.Jumping)
                 {
                     answer = false;
